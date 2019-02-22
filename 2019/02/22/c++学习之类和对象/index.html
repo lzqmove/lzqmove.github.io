@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<link rel="bookmark" type="image/x-icon" href="/img/lolo.png">
+	<link rel="shortcut icon" href="/img/lolo.png">
+	
+			    <title>
+    Mr.LZQ
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/css/mic_main.css">
+    <link rel="stylesheet" href="/css/dropdownMenu.css">
+    <meta name="keywords" content="lzqpoewrs">
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css">
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+</head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css">
+<link rel="stylesheet" href="/css/typo.css">
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">LZQ</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special">
+            <ul class="menu links">
+			<!-- Homepage  主页  --> 
+			<li>
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">分类</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="category-link" href="/categories/c/">c++</a></li><li><a class="category-link" href="/categories/pyton/">pyton</a></li><li><a class="category-link" href="/categories/嵌入式/">嵌入式</a>
+	                    </li></ul>
+	        </li>
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/about/" title="简历">
+		                简历
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/group/" title="团队">
+		                团队
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/gallery/" title="图库">
+		                图库
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/tag/" title="标签">
+		                标签
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/lzqmove" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a title="500px" href="http://500px.com" target="_blank" rel="noopener">
+                            <i class="icon fa fa-500px"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main">
+            <div class="post_page_title_img" style="height: 25rem;background-image: url(https://upload-images.jianshu.io/upload_images/16271012-b179a966838ec731.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>c++之类和对象</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h1 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h1><p>起初一看，这个概念貌似在c语言中并没有存在过，应该是属于c++的核心之一了吧，下面开始仔细学习。<br>首先，提出以下问题以供思考：</p>
+<p>• 什么是类和对象；<br>• 类如何帮助您整合数据和处理数据的函数；<br>• 构造函数、复制构造函数和析构函数；<br>• 移动构造函数是什么；<br>• 封装和抽象等面向对象的概念；<br>• this 指针；<br>• 结构是什么，它与类有何不同。</p>
+<h2 id="什么是类"><a href="#什么是类" class="headerlink" title="什么是类"></a>什么是类</h2><p>要在程序中模拟人，需要一个结构，如图所示，将定义人的属性（数据）以及人可使用这些属性执行的操作（函数）整合在一起。这种结构就是类。<br><img src="https://upload-images.jianshu.io/upload_images/16271012-da72c7ccd3342561.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="声明类"><a href="#声明类" class="headerlink" title="声明类"></a>声明类</h2><p>要声明类，可使用关键字 class，并在它后面依次包含类名，一组放在{}内的成员属性和成员函数，<br>以及结尾的分号。</p>
+<p>模拟人类的类类似于下面这样:<br><strong>class Human</strong><br>{<br> // Member attributes:<br> string name;<br> string dateOfBirth;<br> string placeOfBirth;<br> string gender;<br> // Member functions:<br> void Talk(string textToTalk);<br> void IntroduceSelf();<br> …<br>}; </p>
+<p>封装指的是将数据以及使用它们的函数进行逻辑编组，这是面向对象编程的重要特征。<br>创建 Human 对象与创建其他类型（如 double）的实例类似：</p>
+<p>double pi= 3.1415;<br>Human firstMan;</p>
+<p>就像可以为其他类型（如 int）动态分配内存一样，也可使用 new 为 Human 对象动态地分配内存：</p>
+<p>int* pointsToNum = new int;<br>delete pointsToNum; </p>
+<p>Human* firstWoman = new Human();<br>delete firstWoman; </p>
+<h2 id="使用句点运算符访问成员"><a href="#使用句点运算符访问成员" class="headerlink" title="使用句点运算符访问成员"></a>使用句点运算符访问成员</h2><p>一个人的例子是 Adam，男性，1970 年出生于阿拉巴马州。firstMan 是 Human 类的对象，是这个<br>类存在于现实世界（运行阶段）的化身：</p>
+<p>Human firstMan;<br>firstMan.dateOfBirth = “1970”;    //    类声明表明，firstMan 有 dateOfBirth 等属性，可使用句点运算符（.）<br>firstMan.IntroduceSelf();                    来访问</p>
+<p>如果有一个指针 firstWoman，它指向 Human 类的一个实例，则可使用指针运算符（-&gt;）来访问成<br>员，也可使用 间接运算符（<em>） 来获取对象，再使用 句点运算符 来访问成员：<br>Human</em> firstWoman = new Human();<br>(*firstWoman).IntroduceSelf(); </p>
+<h2 id="使用指针运算符（-gt-）访问成员"><a href="#使用指针运算符（-gt-）访问成员" class="headerlink" title="使用指针运算符（-&gt;）访问成员"></a>使用指针运算符（-&gt;）访问成员</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> #include &lt;iostream&gt; </span><br><span class="line"> #include &lt;string&gt; </span><br><span class="line">using namespace std; </span><br><span class="line"> class Human </span><br><span class="line"> &#123; </span><br><span class="line">  public: </span><br><span class="line">  string name; </span><br><span class="line">  int age; </span><br><span class="line">void IntroduceSelf() </span><br><span class="line"> &#123; </span><br><span class="line">cout &lt;&lt; &quot;I am &quot; + name &lt;&lt; &quot; and am &quot;; </span><br><span class="line">cout &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; </span><br><span class="line"> &#125; </span><br><span class="line"> &#125;; </span><br><span class="line"></span><br><span class="line">int main() </span><br><span class="line"> &#123; </span><br><span class="line">Human firstMan; </span><br><span class="line">firstMan.name = &quot;Adam&quot;; </span><br><span class="line">firstMan.age = 30; </span><br><span class="line">Human firstWoman; </span><br><span class="line">firstWoman.name = &quot;Eve&quot;; </span><br><span class="line">firstWoman.age = 28; </span><br><span class="line">firstMan.IntroduceSelf(); </span><br><span class="line">firstWoman.IntroduceSelf(); </span><br><span class="line"> &#125; </span><br><span class="line">输出：I am Adam and am 30 years old </span><br><span class="line">I am Eve and am 28 years old</span><br></pre></td></tr></table></figure>
+<h2 id="关键字-public-和-private"><a href="#关键字-public-和-private" class="headerlink" title="关键字 public 和 private"></a>关键字 public 和 private</h2><p>作为类的设计者，您可使用 C++关键字 public<br>和 private 来指定哪些部分可从外部（如 main( )）访问，哪些部分不能。</p>
+<p>程序实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Human </span><br><span class="line">&#123; </span><br><span class="line">private: </span><br><span class="line"> // Private member data: </span><br><span class="line"> int age; </span><br><span class="line"> string name; </span><br><span class="line">public: </span><br><span class="line"> int GetAge() </span><br><span class="line"> &#123; </span><br><span class="line"> return age; </span><br><span class="line"> &#125; </span><br><span class="line"> void SetAge(int humansAge) </span><br><span class="line"> &#123; </span><br><span class="line"> age = humansAge; </span><br><span class="line"> &#125; </span><br><span class="line">// ...Other members and declarations </span><br><span class="line">&#125;; </span><br><span class="line"></span><br><span class="line">Human eve; </span><br><span class="line">cout &lt;&lt; eve.age; // compile error </span><br><span class="line">cout &lt;&lt; eve.GetAge(); // OK</span><br></pre></td></tr></table></figure></p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数是一种特殊的函数，它与类同名且不返回任何值。<br>声明如下：<br>一、<br>class Human<br>{<br>public:<br> Human(); // declaration of a constructor<br>};<br>二、<br>class Human<br>{<br>public:<br> Human()<br> {<br> // constructor code here<br> }<br>};<br>三、<br>class Human<br>{<br>public:<br> Human(); // constructor declaration<br>};<br>// constructor implementation (definition)<br>Human::Human()<br>{<br> // constructor code here<br>} </p>
+<p>补充：   ::被称为作用域解析运算符。例如，Human::dateOfBirth 指的是在 Human 类  中  声明的变量 dateOfBirth，而::dateOfBirth 表示全局作用域中的变量 dateOfBirth。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">使 用 构 造 函 数 初 始 化 类 成 员 变 量</span><br><span class="line">  #include &lt;iostream&gt; </span><br><span class="line"> #include &lt;string&gt; </span><br><span class="line">using namespace std; </span><br><span class="line">class Human </span><br><span class="line"> &#123; </span><br><span class="line">private: </span><br><span class="line">string name; </span><br><span class="line"> int age; </span><br><span class="line"> public: </span><br><span class="line"> Human() // constructor </span><br><span class="line"> &#123; </span><br><span class="line"> age = 1; // initialization </span><br><span class="line">cout &lt;&lt; &quot;Constructed an instance of class Human&quot; &lt;&lt; endl; </span><br><span class="line"> &#125; </span><br><span class="line">void SetName (string humansName) </span><br><span class="line">&#123; </span><br><span class="line"> name = humansName; </span><br><span class="line"> &#125; </span><br><span class="line"> void SetAge(int humansAge) </span><br><span class="line">&#123; </span><br><span class="line"> age = humansAge; </span><br><span class="line"> &#125; </span><br><span class="line"> void IntroduceSelf() </span><br><span class="line"> &#123; </span><br><span class="line"> cout &lt;&lt; &quot;I am &quot; + name &lt;&lt; &quot; and am &quot;; </span><br><span class="line">cout &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; </span><br><span class="line"> &#125; </span><br><span class="line">&#125;; </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line"> Human firstWoman; </span><br><span class="line"> firstWoman.SetName(&quot;Eve&quot;); </span><br><span class="line"> firstWoman.SetAge (28); </span><br><span class="line"> firstWoman.IntroduceSelf(); </span><br><span class="line">&#125; </span><br><span class="line">输出：</span><br><span class="line">Constructed an instance of class Human </span><br><span class="line">I am Eve and am 28 years old</span><br></pre></td></tr></table></figure></p>
+<h2 id="重载构造函数"><a href="#重载构造函数" class="headerlink" title="重载构造函数"></a>重载构造函数</h2><p>历程<br>猪猪猪猪猪猪猪<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">  #include &lt;iostream&gt; </span><br><span class="line">  #include &lt;string&gt; </span><br><span class="line">  using namespace std;  </span><br><span class="line">  class Human </span><br><span class="line">  &#123; </span><br><span class="line">  private: </span><br><span class="line">  string name; </span><br><span class="line">  int age; </span><br><span class="line"> public: </span><br><span class="line"> Human()</span><br><span class="line"> &#123; </span><br><span class="line"> age = 0;</span><br><span class="line"> cout &lt;&lt; &quot;Default constructor: name and age not set&quot; &lt;&lt; endl; </span><br><span class="line"> &#125;  </span><br><span class="line"> Human(string humansName, int humansAge) </span><br><span class="line"> &#123; </span><br><span class="line"> name = humansName; </span><br><span class="line"> age = humansAge; </span><br><span class="line">cout &lt;&lt; &quot;Overloaded constructor creates &quot;; </span><br><span class="line">cout &lt;&lt; name &lt;&lt; &quot; of &quot; &lt;&lt; age &lt;&lt; &quot; years&quot; &lt;&lt; endl; </span><br><span class="line">&#125; </span><br><span class="line">&#125;; </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">Human firstMan; </span><br><span class="line">Human firstWoman (&quot;Eve&quot;, 20);  </span><br><span class="line"> &#125; </span><br><span class="line">输出：</span><br><span class="line">Default constructor: name and age not set </span><br><span class="line">Overloaded constructor creates Eve of 20 years</span><br></pre></td></tr></table></figure></p>
+<h2 id="包含初始化列表的构造函数"><a href="#包含初始化列表的构造函数" class="headerlink" title="包含初始化列表的构造函数"></a>包含初始化列表的构造函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">程序清单 9.6 接受带默认值的参数的默认构造函数，并使用初始化列表来设置成员</span><br><span class="line"> #include &lt;iostream&gt; </span><br><span class="line"> #include &lt;string&gt; </span><br><span class="line">using namespace std; </span><br><span class="line"> class Human </span><br><span class="line"> &#123; </span><br><span class="line">private: </span><br><span class="line">     int age; </span><br><span class="line">      string name; </span><br><span class="line"> public: </span><br><span class="line">   Human(string humansName = &quot;Adam&quot;, int humansAge = 25) </span><br><span class="line">              :name(humansName), age(humansAge) </span><br><span class="line">  &#123; </span><br><span class="line">cout &lt;&lt; &quot;Constructed a human called &quot; &lt;&lt; name; </span><br><span class="line">cout &lt;&lt; &quot;, &quot; &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; </span><br><span class="line"> &#125; </span><br><span class="line">&#125;; </span><br><span class="line"> int main() </span><br><span class="line"> &#123; </span><br><span class="line">Human adam; </span><br><span class="line"> Human eve(&quot;Eve&quot;, 18); </span><br><span class="line"> return 0; </span><br><span class="line">&#125; </span><br><span class="line">输出：</span><br><span class="line">Constructed a human called Adam, 25 years old </span><br><span class="line">Constructed a human called Eve, 18 years old</span><br></pre></td></tr></table></figure>
+<h2 id="析构函数-析构函数-析构函数"><a href="#析构函数-析构函数-析构函数" class="headerlink" title="析构函数 析构函数 析构函数"></a>析构函数 析构函数 析构函数</h2><p>与构造函数一样，析构函数也是一种特殊的函数。<strong>构造函数在实例化对象时被调用，而析构函数<br>在对象销毁时自动被调用。</strong><br>析构函数看起来像一个与类同名的函数，但前面有一个腭化符号（～）。因此，Human 类的析构函<br>数的声明类似于下面这样:</p>
+<p>①<br>class Human<br>{<br> ~Human(); // declaration of a destructor<br>};<br>②<br>class Human<br>{<br>public:<br> ~Human()<br> {<br> // destructor code here<br> }<br>};<br>③<br>class Human<br>{<br>public:<br> ~Human();<br>}; </p>
+<p>Human::~Human()<br>{ </p>
+<p>} </p>
+<p><strong>析构函数的功能</strong>：每当对象不再在作用域内或通过 delete 被删除进而被销毁时，都将调用析构函数。这使得析构函数成为重置变量以及释放动态分配的内存和其他资源的理想场所。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">一 个 简 单 的 类，它 封 装 了 字 符 缓 冲 区 并 通 析 构 函 数 释 放 它 </span><br><span class="line"> #include &lt;iostream&gt; </span><br><span class="line"> #include &lt;string.h&gt; </span><br><span class="line"> using namespace std; </span><br><span class="line"> class MyString </span><br><span class="line"> &#123; </span><br><span class="line"> private: </span><br><span class="line">    char* buffer; </span><br><span class="line"> public: </span><br><span class="line">    MyString(const char* initString) </span><br><span class="line">   &#123; </span><br><span class="line">   if(initString != NULL) </span><br><span class="line">   &#123; </span><br><span class="line">   buffer = new char [strlen(initString) + 1]; </span><br><span class="line">   strcpy(buffer, initString); </span><br><span class="line">    &#125; </span><br><span class="line"> else </span><br><span class="line">   buffer = NULL; </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line"> ~MyString() </span><br><span class="line">   &#123; </span><br><span class="line">  cout &lt;&lt; &quot;Invoking destructor, clearing up&quot; &lt;&lt; endl; </span><br><span class="line">  if (buffer != NULL) </span><br><span class="line">  delete [] buffer; </span><br><span class="line">  &#125; </span><br><span class="line"></span><br><span class="line"> int GetLength() </span><br><span class="line">   &#123; </span><br><span class="line">  return strlen(buffer); </span><br><span class="line">   &#125; </span><br><span class="line"></span><br><span class="line"> const char* GetString() </span><br><span class="line">   &#123; </span><br><span class="line">   return buffer; </span><br><span class="line">   &#125; </span><br><span class="line"> &#125;; </span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">   &#123; </span><br><span class="line"> MyString sayHello(&quot;Hello from String Class&quot;); </span><br><span class="line"> cout &lt;&lt; &quot;String buffer in sayHello is &quot; &lt;&lt; sayHello.GetLength(); </span><br><span class="line"> cout &lt;&lt; &quot; characters long&quot; &lt;&lt; endl; </span><br><span class="line"> cout &lt;&lt; &quot;Buffer contains: &quot; &lt;&lt; sayHello.GetString() &lt;&lt; endl; </span><br><span class="line"> &#125; </span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">String buffer in sayHello is 23 characters long </span><br><span class="line">Buffer contains: Hello from String Class </span><br><span class="line">Invoking destructor, clearing up</span><br></pre></td></tr></table></figure>
+<h2 id="使用关键字explicit可以避免隐式转换"><a href="#使用关键字explicit可以避免隐式转换" class="headerlink" title="使用关键字explicit可以避免隐式转换"></a>使用关键字explicit可以避免隐式转换</h2><h2 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h2><p>在类中，关键字 this 包含当前对象的地址，换句话说，其值为&amp;object。<br>分析如下：<br>class Human<br>{<br>private:<br>  void Talk (string Statement)<br>  cout &lt;&lt; Statement;<br> }<br>public:<br> void IntroduceSelf()<br> {<br> Talk(“Bla bla”); // same as Talk(this, “Bla Bla”)<br> }<br>}; </p>
+<p>在这里，方法 IntroduceSelf( )使用私有成员 Talk( )在屏幕上显示一句话。实际上，编译器将在调用<br>Talk 时嵌入 this 指针，即 Talk(this, “Blab la”)</p>
+<h2 id="将-sizeof-用于类"><a href="#将-sizeof-用于类" class="headerlink" title="将 sizeof( )用于类"></a>将 sizeof( )用于类</h2><p>运算符 sizeof( )用于确定指定类型需要多少内存，单位为字节。这个运算符也可用于类，在这种情<br>况下，它将指出类声明中所有数据属性占用的总内存量，单位为字节。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">**应用如下**</span><br><span class="line">#include &lt;iostream&gt; </span><br><span class="line">#include &lt;string.h&gt; </span><br><span class="line">using namespace std; </span><br><span class="line">class MyString </span><br><span class="line">&#123; </span><br><span class="line">private: </span><br><span class="line">char* buffer; </span><br><span class="line"> </span><br><span class="line">public: </span><br><span class="line">MyString(const char* initString) // default constructor </span><br><span class="line">&#123; </span><br><span class="line">buffer = NULL; </span><br><span class="line">if(initString != NULL) </span><br><span class="line">&#123; </span><br><span class="line">buffer = new char [strlen(initString) + 1]; </span><br><span class="line">strcpy(buffer, initString); </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">MyString(const MyString&amp; copySource) // copy constructor </span><br><span class="line">&#123; </span><br><span class="line">buffer = NULL; </span><br><span class="line">if(copySource.buffer != NULL) </span><br><span class="line">&#123; </span><br><span class="line">buffer = new char [strlen(copySource.buffer) + 1]; </span><br><span class="line">strcpy(buffer, copySource.buffer); </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">~MyString() </span><br><span class="line">&#123; </span><br><span class="line">delete [] buffer; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">int GetLength() </span><br><span class="line">&#123; return strlen(buffer); &#125; </span><br><span class="line"> </span><br><span class="line">const char* GetString() </span><br><span class="line">&#123; return buffer; &#125; </span><br><span class="line">&#125;; </span><br><span class="line"> </span><br><span class="line">class Human </span><br><span class="line">&#123; </span><br><span class="line">private: </span><br><span class="line">int age; </span><br><span class="line">bool gender; </span><br><span class="line">MyString name; </span><br><span class="line"> </span><br><span class="line">public: </span><br><span class="line">Human(const MyString&amp; InputName, int InputAge, bool gender) </span><br><span class="line">: name(InputName), age (InputAge), gender(gender) &#123;&#125; </span><br><span class="line"> </span><br><span class="line">int GetAge () </span><br><span class="line">&#123; return age; &#125; </span><br><span class="line">&#125;; </span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">MyString mansName(&quot;Adam&quot;); </span><br><span class="line">MyString womansName(&quot;Eve&quot;); </span><br><span class="line"> </span><br><span class="line">cout &lt;&lt; &quot;sizeof(MyString) = &quot; &lt;&lt; sizeof(MyString) &lt;&lt; endl; </span><br><span class="line">cout &lt;&lt; &quot;sizeof(mansName) = &quot; &lt;&lt; sizeof(mansName) &lt;&lt; endl; </span><br><span class="line">cout &lt;&lt; &quot;sizeof(womansName) = &quot; &lt;&lt; sizeof(womansName) &lt;&lt; endl; </span><br><span class="line"> </span><br><span class="line">Human firstMan(mansName, 25, true); </span><br><span class="line">Human firstWoman(womansName, 18, false); </span><br><span class="line"> </span><br><span class="line">cout &lt;&lt; &quot;sizeof(Human) = &quot; &lt;&lt; sizeof(Human) &lt;&lt; endl; </span><br><span class="line">cout &lt;&lt; &quot;sizeof(firstMan) = &quot; &lt;&lt; sizeof(firstMan) &lt;&lt; endl; </span><br><span class="line">cout &lt;&lt; &quot;sizeof(firstWoman) = &quot; &lt;&lt; sizeof(firstWoman) &lt;&lt; endl; </span><br><span class="line"> </span><br><span class="line">return 0; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">输出;</span><br><span class="line">sizeof(MyString) = 4 </span><br><span class="line">sizeof(mansName) = 4 </span><br><span class="line">sizeof(womansName) = 4 </span><br><span class="line">sizeof(Human) = 12 </span><br><span class="line">sizeof(firstMan) = 12 </span><br><span class="line">sizeof(firstWoman) = 12</span><br></pre></td></tr></table></figure></p>
+<h2 id="结构不同于类的地方"><a href="#结构不同于类的地方" class="headerlink" title="结构不同于类的地方"></a>结构不同于类的地方</h2><p>关键字 struct 来自 C 语言，在 C++编译器看来，它与类及其相似，差别在于程序员未指定时，默<br>认的访问限定符（public 和 private）不同。因此，除非指定了，否则结构中的成员默认为公有的（而<br>类成员默认为私有的）；另外，除非指定了，否则结构以公有方式继承基结构（而类为私有继承）。<br>结构可以不注明公有的部分。</p>
+<h2 id="声明友元"><a href="#声明友元" class="headerlink" title="声明友元"></a>声明友元</h2><p>不能从外部访问类的私有数据成员和方法，但这条规则不适用于友元类和友元函数。要声明友元<br>类或友元函数，可使用关键字 friend，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">使用关键字  friend  让外部  函数   DisplayAge( )  能够访问   私有数据成员</span><br><span class="line"> #include &lt;iostream&gt; </span><br><span class="line"> #include &lt;string&gt; </span><br><span class="line"> using namespace std; </span><br><span class="line"> class Human </span><br><span class="line"> &#123; </span><br><span class="line"> private: </span><br><span class="line">      friend void DisplayAge(const Human&amp; person); //函数 DisplayAge( )是全局函数，还是 Human 类的友元，因此能够访问Human 类的私有数据成员。</span><br><span class="line">    string name; </span><br><span class="line"> int age; </span><br><span class="line"> </span><br><span class="line"> public: </span><br><span class="line"> Human(string humansName, int humansAge) </span><br><span class="line">  &#123; </span><br><span class="line">   name = humansName; </span><br><span class="line">   age = humansAge; </span><br><span class="line">  &#125; </span><br><span class="line">  &#125;; </span><br><span class="line"> </span><br><span class="line"> void DisplayAge(const Human&amp; person) </span><br><span class="line">&#123; </span><br><span class="line"> cout &lt;&lt; person.age &lt;&lt; endl; </span><br><span class="line"> &#125; </span><br><span class="line"> </span><br><span class="line"> int main() </span><br><span class="line"> &#123; </span><br><span class="line"> Human firstMan(&quot;Adam&quot;, 25); </span><br><span class="line"> cout &lt;&lt; &quot;Accessing private member age via friend function: &quot;; </span><br><span class="line"> DisplayAge(firstMan); </span><br><span class="line"> return 0; </span><br><span class="line"> &#125; </span><br><span class="line"></span><br><span class="line">输出</span><br><span class="line">Accessing private member age via friend function: 25</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">使用关键字  friend  让  外部类 Utility   能够访问  私有数据成员</span><br><span class="line"> #include &lt;iostream&gt; </span><br><span class="line"> #include &lt;string&gt; </span><br><span class="line"> using namespace std; </span><br><span class="line"> </span><br><span class="line"> class Human </span><br><span class="line"> &#123; </span><br><span class="line">  private: </span><br><span class="line">    friend class Utility;  //指出 Utility 类是 Human 类的友元，该声明让 Utility 类的所有方法都能访问 Human 类的私有数据成员和方法。</span><br><span class="line">   string name; </span><br><span class="line"> int age; </span><br><span class="line"> </span><br><span class="line"> public: </span><br><span class="line"> Human(string humansName, int humansAge) </span><br><span class="line"> &#123; </span><br><span class="line">  name = humansName; </span><br><span class="line">  age = humansAge; </span><br><span class="line"> &#125; </span><br><span class="line"> &#125;; </span><br><span class="line"> </span><br><span class="line"> class Utility </span><br><span class="line"> &#123; </span><br><span class="line"> public: </span><br><span class="line"> static void DisplayAge(const Human&amp; person) </span><br><span class="line"> &#123; </span><br><span class="line"> cout &lt;&lt; person.age &lt;&lt; endl; </span><br><span class="line"> &#125; </span><br><span class="line"> &#125;;  </span><br><span class="line"> int main() </span><br><span class="line"> &#123; </span><br><span class="line"> Human firstMan(&quot;Adam&quot;, 25); </span><br><span class="line"> cout &lt;&lt; &quot;Accessing private member age via friend class: &quot;; </span><br><span class="line"> Utility::DisplayAge(firstMan); </span><br><span class="line"> return 0; </span><br><span class="line"> &#125; </span><br><span class="line">输出：</span><br><span class="line">Accessing private member age via friend class: 25</span><br></pre></td></tr></table></figure>
+<h2 id="共用体"><a href="#共用体" class="headerlink" title="共用体"></a>共用体</h2><p>共用体是一种特殊的类，每次只有一个非静态数据成员处于活动状态。因此，共用体与类一样，<br>可包含多个数据成员，但不同的是只能使用其中的一个。<br>要声明共用体，可使用关键字 union ，如下所示<br>union UnionName<br>{<br> Type1 member1;<br> Type2 member2;<br>…<br> TypeN memberN;<br>};<br>要实例化并使用共用体，可像下面这样做：<br>UnionName unionObject;<br>unionObject.member2 = value;<br>猪猪猪猪猪：与结构类似，共用体的成员默认也是公有的，将 sizeof()用于共用体时，结果总是为共用体最大成员的长度，即便该成员并不处于活动状态。</p>
+<h2 id="聚合初始化"><a href="#聚合初始化" class="headerlink" title="聚合初始化"></a>聚合初始化</h2><p>下面的结构符合成为聚合类型的条件：<br>struct Aggregate1<br>{<br> int num;<br> double pi;<br>};<br>可将其作为一个整体进行初始化：<br>Aggregate1 a1{ 2017, 3.14 };<br>再来看一个例子：<br>struct Aggregate2<br>{<br> int num;<br> char hello[6];<br> int impYears[5];<br>};<br>对于这个结构，可像下面这样进行初始化：<br>Aggregate2 a2 {42, {‘h’, ‘e’, ‘l’, ‘l’, ‘o’}, {1998, 2003, 2011, 2014, 2017}}; </p>
+<hr>
+<p> 文章依据21天学通C++第八版，纯属小白自学！！！！</p>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-lzqmove-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/02/22/c++学习之类和对象/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/02/22/c++学习之类和对象/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-lzqmove-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a href="https://github.com/lzqmove " style="border-bottom: none;">LZQ</a></li>
+            </ul>
+            
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
