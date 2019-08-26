@@ -151,19 +151,27 @@
 </nav>
 
         <div id="main">
-            <div class="post_page_title_img" style="height: 25rem;background-image: url(http://img.25pp.com/uploadfile/soft/images/2015/0414/20150414054419932.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>人工智能与python</h2></a>
+            <div class="post_page_title_img" style="height: 25rem;background-image: url(https://upload-images.jianshu.io/upload_images/16271012-d7e69820d7306670.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>Python学习笔记</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h1 id="人工智能与python"><a href="#人工智能与python" class="headerlink" title="人工智能与python"></a>人工智能与python</h1><hr>
-<h2 id="应用简单了解"><a href="#应用简单了解" class="headerlink" title="应用简单了解"></a>应用简单了解</h2><p>  手机，电脑，无人机，无人驾驶，阿尔法狗等等。<br>  人工智能-&gt;机器学习-&gt;深度学习。<br>  python是必备工具手段。</p>
-<h2 id="python的优势"><a href="#python的优势" class="headerlink" title="python的优势"></a>python的优势</h2><p> 可以进行多平台运行，比如windows，linux，macos。。。，最好在linux系统上练习，高点有意思的事情可以用树莓派。</p>
-<p> 语法简单，容易理解，简单易学。</p>
-<p> 现在存在的强大的数据处理库，numpy（提供了许多python进行n维数组和矩阵操作的功能），scipy（提供高效的数学运算功能），pandas（数据观察），matplotlib（做熟据的可视化图表）</p>
-<p>可以进行web开发，爬虫，图形界面开发，科学家计算框架，机器学习，操作数据库等等</p>
-<p>python的编程利器，  jupyther notebook，前身是Ipython，推推i推推，大家都说好。</p>
-<h3 id="就业方向"><a href="#就业方向" class="headerlink" title="就业方向"></a>就业方向</h3><p>网站开发，人工智能，数据分析，linux运维，爬虫工程师，自动化测试。</p>
+                <h1 id="Python学习笔记"><a href="#Python学习笔记" class="headerlink" title="Python学习笔记"></a>Python学习笔记</h1><p><a href="https://purethought.cn/2019/06/25/%E7%BC%96%E7%A8%8B/Python/Python3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">https://purethought.cn/2019/06/25/%E7%BC%96%E7%A8%8B/Python/Python3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></p>
+<h1 id="用Anaconda管理python的包"><a href="#用Anaconda管理python的包" class="headerlink" title="用Anaconda管理python的包"></a>用Anaconda管理python的包</h1><h2 id="一、下载对应版本的ANACONDA"><a href="#一、下载对应版本的ANACONDA" class="headerlink" title="一、下载对应版本的ANACONDA"></a>一、下载对应版本的ANACONDA</h2><h2 id="二、更换anaconda镜像源"><a href="#二、更换anaconda镜像源" class="headerlink" title="二、更换anaconda镜像源"></a>二、更换anaconda镜像源</h2><p>点击anaconda的environment，注意此后的所有操作都是在environment中进行。<br>creat一个的环境，例如命名为“anaconda_python27”。<br>然后更换anaconda中的镜像源，因为原来的镜像源好像不太好用。<br>点击右侧栏中Channel，Add，添加如下两个源（不知道哪个是好用的）：</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</a><br><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</a></p>
+<p>其他镜像源：</p>
+<p>清华大学 <a href="https://pypi.tuna.tsinghua.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/</a></p>
+<p>阿里云 <a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/</a></p>
+<p>中国科技大学 <a href="https://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.mirrors.ustc.edu.cn/simple/</a></p>
+<p>豆瓣(douban) <a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a></p>
+<p>中国科学技术大学 <a href="http://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">http://pypi.mirrors.ustc.edu.cn/simple/</a></p>
+<h2 id="三、添加opencv和numpy"><a href="#三、添加opencv和numpy" class="headerlink" title="三、添加opencv和numpy"></a>三、添加opencv和numpy</h2><p>继续上续操作，将Installed改为All，<br>在搜索栏中搜索opencv，选中后Apply，这样就安装好了opencv，<br>nump安装同理。</p>
+<h2 id="四、新建工程、测试"><a href="#四、新建工程、测试" class="headerlink" title="四、新建工程、测试"></a>四、新建工程、测试</h2><p>打开pycharm，<br>file-new project</p>
+<p>import cv2</p>
+<p>print(cv2.<strong>version</strong>)</p>
+<p>输出：3.4.1</p>
+<hr>
+<p>文章参考德强师兄博客<a href="https://purethought.cn/" target="_blank" rel="noopener">https://purethought.cn/</a></p>
 
             </div>
 
@@ -226,8 +234,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/02/04/人工智能与python/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/2019/02/04/人工智能与python/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2019/08/26/Python学习笔记/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/08/26/Python学习笔记/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
