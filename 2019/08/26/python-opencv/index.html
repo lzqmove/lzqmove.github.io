@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Python-opencv | Mr.LZQ</title>
+  
+    <link rel="shortcut icon" href="/images/lolo.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "LZQmove";
+  mashiro_option.author_name = "move";
+  mashiro_option.site_url = "https://lzqmove.cn";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/lzqmove/CDN/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/CDN/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/CDN/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/CDN/img/cover/(4).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/CDN/img/cover/(5).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/CDN/img/cover/(6).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/CDN/img/cover/(7).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/CDN/img/cover/(8).jpg.webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://lzqmove.cn">
+          <img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/custom/bg.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>临渊羡鱼，不如退而结网！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">LZQ</span>
+            <span class="shironeko">move</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/资源/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/转载/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友  链
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          个人简历
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+          <header class="entry-header">
+            <h1 class="entry-title">Python-opencv</h1>
+            <p class="entry-census">&nbsp;·&nbsp;2019-8-26&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p><p></p>
+
+            <hr>
+          </header>
+        
+        <div class="entry-content">
+          <h1 id="一、Python-opencv-应用"><a href="#一、Python-opencv-应用" class="headerlink" title="一、Python-opencv 应用"></a>一、Python-opencv 应用</h1><h2 id="首先，安装好python，anaconda、pycharm"><a href="#首先，安装好python，anaconda、pycharm" class="headerlink" title="首先，安装好python，anaconda、pycharm"></a>首先，安装好python，anaconda、pycharm</h2><h2 id="测试程序-调用摄像头"><a href="#测试程序-调用摄像头" class="headerlink" title="测试程序-调用摄像头"></a>测试程序-调用摄像头</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import cv2 #导入opencv库</span><br><span class="line">cap = cv2.VideoCapture(0) #调用摄像头，参数是设备编号</span><br><span class="line">#主循环是读取摄像头图像，按q停止</span><br><span class="line">while True:</span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    cv2.imshow(&apos;video&apos;,frame)</span><br><span class="line">    if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">        break</span><br><span class="line">cap.release() #释放cap </span><br><span class="line">cv2.destroyAllWindows()#销毁所有窗口</span><br></pre></td></tr></table></figure>
+<h1 id="二、颜色空间转换"><a href="#二、颜色空间转换" class="headerlink" title="二、颜色空间转换"></a>二、颜色空间转换</h1><p>OpenCV 中有数百种不同色彩空间转换的方法。当前最主要的,最常用的有三种颜色空间:灰度,BGR,HSV。<br>⚫ 灰度色彩空间是通过去除彩色信息来将其转换为灰阶,灰度色彩空间对中间处理特别有效,比如人脸检测。<br>⚫ BGR,即蓝-绿-红色彩空间,每一个像素点由一个三元数来表示,分别代表蓝绿红三种颜色<br>⚫ HSV,H(Hue)是色调,用角度度量,取值范围为 0°~360°,从红色开始按逆时针方向计算,红色为 0°,绿色为 120°,蓝色为 240°,S(Saturation)是饱和度,V(Value)表示黑暗程度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">cap = cv2.VideoCapture(0)</span><br><span class="line">while True:</span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    cv2.imshow(&apos;video&apos;,frame)</span><br><span class="line">    #灰度转化</span><br><span class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</span><br><span class="line">    cv2.imshow(&apos;gray&apos;,gray)</span><br><span class="line">    #hsv转化</span><br><span class="line">    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</span><br><span class="line">    cv2.imshow(&apos;hsv&apos;, hsv)</span><br><span class="line">    if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">        break</span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<h1 id="三、图像缩放"><a href="#三、图像缩放" class="headerlink" title="三、图像缩放"></a>三、图像缩放</h1><p>很多时候,读取图像过于清晰,会导致像素点过多,读取缓慢,影响效率,下面介绍 Opencv是如何在保留最大信息的前提下缩放图像的。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">cap = cv2.VideoCapture(0)</span><br><span class="line">while True:</span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    cv2.imshow(&apos;video&apos;,frame)</span><br><span class="line">    #第 8 行, shape ()函数返回一个列表,这个列表第一个元素是图像宽度,第二个元素是图像高度,分别赋值为 x,y</span><br><span class="line">    x, y = frame.shape[0:2]</span><br><span class="line">    #第 9 行，resize 函数,将图像缩小为原图 1/4 大小，x/2,y/2</span><br><span class="line">    small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">    cv2.imshow(&apos;small&apos;, small_frame)</span><br><span class="line">    if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">        break</span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<h1 id="四、图像滤波"><a href="#四、图像滤波" class="headerlink" title="四、图像滤波"></a>四、图像滤波</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">cap = cv2.VideoCapture(0)</span><br><span class="line">while True:</span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    #cv2.imshow(&apos;video&apos;,frame)</span><br><span class="line">    x, y = frame.shape[0:2]</span><br><span class="line">    small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">    cv2.imshow(&apos;small&apos;, small_frame)</span><br><span class="line">    #Blur:模糊滤波</span><br><span class="line">    img_mean = cv2.blur(small_frame, (5,5))</span><br><span class="line">    #Gaussianblur:高斯滤波</span><br><span class="line">    img_Guassian = cv2.GaussianBlur(small_frame, (5,5), 0)</span><br><span class="line">    #Median:中值滤波</span><br><span class="line">    img_median = cv2.medianBlur(small_frame, 5)</span><br><span class="line">    #Bilater:双边滤波</span><br><span class="line">    img_bilater = cv2.bilateralFilter(small_frame, 9, 75, 75)</span><br><span class="line">    cv2.imshow(&apos;mean&apos;, img_mean)</span><br><span class="line">    cv2.imshow(&apos;guassian&apos;, img_Guassian)</span><br><span class="line">    cv2.imshow(&apos;median&apos;, img_median)</span><br><span class="line">    cv2.imshow(&apos;bilater&apos;, img_bilater)</span><br><span class="line">    if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">        break</span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<h1 id="五、颜色识别or轮廓提取"><a href="#五、颜色识别or轮廓提取" class="headerlink" title="五、颜色识别or轮廓提取"></a>五、颜色识别or轮廓提取</h1><p>在 opencv 中颜色识别是最基础,应用最多的内容,一般来讲,在 opencv 中识别特定的颜色需要以下几个步骤:</p>
+<p>颜色空间转换,将 BGR 转化为 HSV 颜色空间,利用色调区别颜色<br>按照阈值滤出所识别的颜色<br>连续的开闭运算,消除噪点,平滑边界<br>提取连通域,提取出要识别的颜色<br>开闭运算就是连续的腐蚀膨胀。<br>开运算:先腐蚀再膨胀,用来消除小物体<br>闭运算:先膨胀再腐蚀,用于排除小型黑洞<br>例程：识别红色和黄色组成的火焰,提取火轮廓。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">cap=cv2.VideoCapture(0)#创建视频窗口</span><br><span class="line">red_min=np.array([0,128,46])#设置红色最小值</span><br><span class="line">red_max=np.array([5,255,255])#设置红色最大值</span><br><span class="line">red2_min=np.array([156,128,46])#设置红色2最小值</span><br><span class="line">red2_max=np.array([180,255,255])#设置红色2最大值</span><br><span class="line">yellow_min=np.array([15,128,46])#设置黄色最小值</span><br><span class="line">yellow_max=np.array([50,255,255])#设置黄色最大值</span><br><span class="line">while True:</span><br><span class="line">    ret,frame=cap.read()#读取摄像头</span><br><span class="line">    cv2.imshow(&apos;video&apos;,frame)#显示摄像头</span><br><span class="line">    x,y=frame.shape[0:2]</span><br><span class="line">    small_frame=cv2.resize(frame,(int(y/2),int(x/2)))</span><br><span class="line">    cv2.imshow(&apos;small&apos;,small_frame)</span><br><span class="line">    src=small_frame.copy()</span><br><span class="line">    res=src.copy()</span><br><span class="line">    hsv=cv2.cvtColor(src,cv2.COLOR_BGR2HSV)#转化为hsv</span><br><span class="line">    cv2.imshow(&apos;hsv&apos;,hsv)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    #二值化，只提取出满足阈值的像素点</span><br><span class="line">    mask_red1=cv2.inRange(hsv,red_min,red_max)</span><br><span class="line">    mask_red2=cv2.inRange(hsv,red2_min,red2_max)</span><br><span class="line">    mask_yellow=cv2.inRange(hsv,yellow_min,yellow_max)</span><br><span class="line">    mask=cv2.bitwise_or(mask_red1,mask_red2)</span><br><span class="line">    mask=cv2.bitwise_or(mask,mask_yellow)</span><br><span class="line">    res=cv2.bitwise_and(src,src,mask=mask)</span><br><span class="line">    h,w=res.shape[:2]</span><br><span class="line">    blured=cv2.blur(res,(5,5))</span><br><span class="line">    ret,bright=cv2.threshold(blured,10,255,cv2.THRESH_BINARY)</span><br><span class="line">    gray=cv2.cvtColor(bright,cv2.COLOR_BGR2GRAY)</span><br><span class="line">    #连续开闭运算</span><br><span class="line">    kernel=cv2.getStructuringElement(cv2.MORPH_RECT,(5,5))</span><br><span class="line">    opened=cv2.morphologyEx(gray,cv2.MORPH_OPEN,kernel)</span><br><span class="line">    closed=cv2.morphologyEx(opened,cv2.MORPH_CLOSE,kernel)</span><br><span class="line">    #提取连通域,得到全部红色黄色区间</span><br><span class="line">    contours,hierarchy=cv2.findContours(closed,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)</span><br><span class="line">    cv2.drawContours(src,contours,-1,(255,0,0),2)</span><br><span class="line">    #提取火焰轮廓</span><br><span class="line">    cv2.imshow(&apos;result&apos;,src)</span><br><span class="line">    if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">        break</span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<h1 id="六、形状检测"><a href="#六、形状检测" class="headerlink" title="六、形状检测"></a>六、形状检测</h1><h2 id="直线检测"><a href="#直线检测" class="headerlink" title="直线检测"></a>直线检测</h2><p>直线检测可以通过 HoughLines 和 HoughLinesP 函数来完成,它们仅有的差别是:<br>第一个函数使用标准 Hough 变换,第二个函数使用概率 Hough 变换。HoughlinesP函数之所以称为概率版本的 Hough 变换是因为它只通过分析点的子集并估计这些点都属于一条直线的概率,这是标准 Hough 变换的优化版本。该函数计算代价少,执行更快。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">cap = cv2.VideoCapture(0)</span><br><span class="line">while True:</span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    x, y = frame.shape[0:2]</span><br><span class="line">    small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">    cv2.imshow(&apos;small&apos;, small_frame)</span><br><span class="line">    gray = cv2.cvtColor(small_frame, cv2.COLOR_BGR2GRAY)</span><br><span class="line">    edges = cv2.Canny(gray, 50, 120)</span><br><span class="line">    minLineLength = 10</span><br><span class="line">    maxLineGap = 5</span><br><span class="line">    lines = cv2.HoughLinesP(edges, 1, np.pi/180, 100, minLineLength, maxLineGap)</span><br><span class="line">    for x1, y1, x2, y2 in lines[0]:</span><br><span class="line">        cv2.line(small_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)</span><br><span class="line">    cv2.imshow(&quot;lines&quot;, small_frame)</span><br><span class="line">    if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">        break</span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<h2 id="圆形检测"><a href="#圆形检测" class="headerlink" title="圆形检测"></a>圆形检测</h2><p>OpenCV 的 HoughCircles 函数可以用来检测圆,它与使用 HoughLines 函数类似。像用来决定删除或保留直线的两个参数 minLineLength 和 maxLineGap 一样,HoughCIrcles 有一个圆心间最小距离和圆的最小及最大半径。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">cap = cv2.VideoCapture(0)</span><br><span class="line">while True:</span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    x, y = frame.shape[0:2]</span><br><span class="line">    small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">    cv2.imshow(&apos;small&apos;, small_frame)</span><br><span class="line">    gray = cv2.cvtColor(small_frame, cv2.COLOR_BGR2GRAY)</span><br><span class="line">    gray_img = cv2.medianBlur(gray, 5)</span><br><span class="line">    cimg = cv2.cvtColor(gray_img, cv2.COLOR_GRAY2BGR)</span><br><span class="line">    circles = cv2.HoughCircles(gray_img, cv2.HOUGH_GRADIENT, 1, 120, param1=100,</span><br><span class="line">    param2=30, minRadius=0, maxRadius=0)</span><br><span class="line">    circles = np.uint16(np.around(circles))</span><br><span class="line">    for i in circles[0,:]:</span><br><span class="line">        cv2.circle(small_frame, (i[0], i[1]), i[2], (0, 255, 0), 2)</span><br><span class="line">        cv2.circle(small_frame, (i[0], i[1]), 2, (0, 0, 255), 3)</span><br><span class="line">    cv2.imshow(&quot;circles&quot;, small_frame)</span><br><span class="line">    if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">        break</span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<h2 id="检测其他形状"><a href="#检测其他形状" class="headerlink" title="检测其他形状"></a>检测其他形状</h2><p> Opencv 中提供了 approxPloyDP 函数来检测所有形状,该函数提供多边形<br> 近似,如果您要检测的图形有多边形,结合 cv2.findContours 函数和<br>  cv2.approxPloyDP 函数,可以相当准确的检测出来。</p>
+<h1 id="七、人脸识别"><a href="#七、人脸识别" class="headerlink" title="七、人脸识别"></a>七、人脸识别</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">def read_images(path, sz=None):</span><br><span class="line">    c = 0</span><br><span class="line">    X, y = [], []</span><br><span class="line">    names = []</span><br><span class="line">    for dirname, dirnames, filenames in os.walk(path):</span><br><span class="line">        for subdirname in dirnames:</span><br><span class="line">            subject_path = os.path.join(dirname, subdirname)</span><br><span class="line">            for filename in os.listdir(subject_path):</span><br><span class="line">                try:</span><br><span class="line">                    if (filename == &quot;.directory&quot;):</span><br><span class="line">                        continue</span><br><span class="line">                    filepath = os.path.join(subject_path, filename)</span><br><span class="line">                    im = cv2.imread(os.path.join(subject_path, filename), cv2.IMREAD_GRAYSCALE)</span><br><span class="line">                    if (im is None):</span><br><span class="line">                        print(&quot;image&quot; + filepath + &quot;is None&quot;)</span><br><span class="line">                    if (sz is not None):</span><br><span class="line">                        im = cv2.resize(im, sz)</span><br><span class="line">                    X.append(np.asarray(im, dtype=np.uint8))</span><br><span class="line">                    y.append(c)</span><br><span class="line">                except:</span><br><span class="line">                    print(&quot;unexpected error&quot;)</span><br><span class="line">                    raise</span><br><span class="line">            c = c+1</span><br><span class="line">            names.append(subdirname)</span><br><span class="line">    return [names, X, y]</span><br><span class="line">def face_rec():</span><br><span class="line">    read_dir = &quot;/home/cdq/pythonStudy/auto/model/data&quot;</span><br><span class="line">    [names, X, y] = read_images(read_dir)</span><br><span class="line">    y = np.asarray(y, dtype=np.int32)</span><br><span class="line">    model = cv2.face_EigenFaceRecognizer.create()</span><br><span class="line">    model.train(np.asarray(X), np.asarray(y))</span><br><span class="line">    face_cascade=cv2.CascadeClassifier(&apos;/home/cdq/pythonStudy/auto/model/haarcascade_frontalface_default.xml&apos;)</span><br><span class="line">    cap = cv2.VideoCapture(0)</span><br><span class="line">    while True:</span><br><span class="line">        ret, frame = cap.read()</span><br><span class="line">        x, y = frame.shape[0:2]</span><br><span class="line">        small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">        result = small_frame.copy()</span><br><span class="line">        gray = cv2.cvtColor(small_frame, cv2.COLOR_BGR2GRAY)</span><br><span class="line">        faces = face_cascade.detectMultiScale(gray, 1.3, 5)</span><br><span class="line">        for (x, y, w, h) in faces:</span><br><span class="line">            result = cv2.rectangle(result, (x, y), (x+w, y+h), (255, 0, 0), 2)</span><br><span class="line">            roi = gray[x:x+w, y:y+h]</span><br><span class="line">            try:</span><br><span class="line">                roi = cv2.resize(roi, (200,200), interpolation=cv2.INTER_LINEAR)</span><br><span class="line">                [p_label, p_confidence] = model.predict(roi)</span><br><span class="line">                #print(names[p_label])</span><br><span class="line">                cv2.putText(result, names[p_label], (x, y-20), cv2.FONT_HERSHEY_SIMPLEX,1, 255, 2)</span><br><span class="line">            except:</span><br><span class="line">                continue</span><br><span class="line">        cv2.imshow(&quot;recognize_face&quot;, result)</span><br><span class="line">        if cv2.waitKey(30) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">            break</span><br><span class="line">    cap.release()</span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    face_rec()</span><br></pre></td></tr></table></figure>
+<h1 id="八、二维码识别"><a href="#八、二维码识别" class="headerlink" title="八、二维码识别"></a>八、二维码识别</h1><h2 id="二维码定位"><a href="#二维码定位" class="headerlink" title="二维码定位"></a>二维码定位</h2><p>定位一张图片中的二维码需要以下几个小步骤:<br>1) 将图像转化为灰度图像<br>2) 使用 opencv 自带的 Sobel 算子进行过滤<br>Sobel 算子是一种常用的边缘检测算子,是一阶的梯度算法;<br>对噪声具有平滑作用,提供较为精确的边缘方向信息,边缘定位精度不够高;<br>当对精度要求不是很高时,是一种较为常用的边缘检测方法。<br>常见的应用和物理意义是边缘检测。<br>记得安装pyzbar模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf8</span><br><span class="line"></span><br><span class="line">import cv2</span><br><span class="line">import pyzbar.pyzbar as pyzbar</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def decodeDisplay(image):</span><br><span class="line">    barcodes = pyzbar.decode(image)</span><br><span class="line">    for barcode in barcodes:</span><br><span class="line">        # 提取条形码的边界框的位置</span><br><span class="line">        # 画出图像中条形码的边界框</span><br><span class="line">        (x, y, w, h) = barcode.rect</span><br><span class="line">        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)</span><br><span class="line"></span><br><span class="line">        # 条形码数据为字节对象，所以如果我们想在输出图像上</span><br><span class="line">        # 画出来，就需要先将它转换成字符串</span><br><span class="line">        barcodeData = barcode.data.decode(&quot;utf-8&quot;)</span><br><span class="line">        barcodeType = barcode.type</span><br><span class="line"></span><br><span class="line">        # 绘出图像上条形码的数据和条形码类型</span><br><span class="line">        text = &quot;&#123;&#125; (&#123;&#125;)&quot;.format(barcodeData, barcodeType)</span><br><span class="line">        cv2.putText(image, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,</span><br><span class="line">                    .5, (0, 0, 125), 2)</span><br><span class="line"></span><br><span class="line">        # 向终端打印条形码数据和条形码类型</span><br><span class="line">        print(&quot;[INFO] Found &#123;&#125; barcode: &#123;&#125;&quot;.format(barcodeType, barcodeData))</span><br><span class="line">    return image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def detect():</span><br><span class="line">    camera = cv2.VideoCapture(0)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        # 读取当前帧</span><br><span class="line">        ret, frame = camera.read()</span><br><span class="line">        # 转为灰度图像</span><br><span class="line">        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</span><br><span class="line">        im = decodeDisplay(gray)</span><br><span class="line"></span><br><span class="line">        cv2.waitKey(5)</span><br><span class="line">        cv2.imshow(&quot;camera&quot;, im)</span><br><span class="line"></span><br><span class="line">    camera.release()</span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    detect()</span><br></pre></td></tr></table></figure></p>
+<h1 id="八、目标追踪"><a href="#八、目标追踪" class="headerlink" title="八、目标追踪"></a>八、目标追踪</h1><p>camshift 利用目标的颜色直方图模型将图像转换为颜色概率分布图,初始化一个搜索窗的大小和位置,并根据上一帧得到的结果自适应调整搜索窗口的位置和大小,从而定位出当前图像中目标的中心位置。<br>tracker_base.py跟踪基类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">import time</span><br><span class="line">class TrackerBase(object):</span><br><span class="line">    def __init__(self, window_name):</span><br><span class="line">        self.window_name = window_name</span><br><span class="line">        self.frame = None</span><br><span class="line">        self.frame_width = None</span><br><span class="line">        self.frame_height = None</span><br><span class="line">        self.frame_size = None</span><br><span class="line">        self.drag_start = None</span><br><span class="line">        self.selection = None</span><br><span class="line">        self.track_box = None</span><br><span class="line">        self.detect_box = None</span><br><span class="line">        self.display_box = None</span><br><span class="line">        self.marker_image = None</span><br><span class="line">        self.processed_image = None</span><br><span class="line">        self.display_image = None</span><br><span class="line">        self.target_center_x = None</span><br><span class="line">        self.cps = 0</span><br><span class="line">        self.cps_values = list()</span><br><span class="line">        self.cps_n_values = 20</span><br><span class="line">    #####mouse event#####</span><br><span class="line">    def onMouse(self, event, x, y, flags, params):</span><br><span class="line">        if self.frame is None:</span><br><span class="line">            return</span><br><span class="line">        if event == cv2.EVENT_LBUTTONDOWN and not self.drag_start:</span><br><span class="line">            self.track_box = None</span><br><span class="line">            self.detect_box = None</span><br><span class="line">            self.drag_start = (x, y)</span><br><span class="line">        if event == cv2.EVENT_LBUTTONUP:</span><br><span class="line">            self.drag_start = None</span><br><span class="line">            self.detect_box = self.selection</span><br><span class="line">        if self.drag_start:</span><br><span class="line">            xmin = max(0, min(x, self.drag_start[0]))</span><br><span class="line">            ymin = max(0, min(y, self.drag_start[1]))</span><br><span class="line">            xmax = min(self.frame_width, max(x, self.drag_start[0]))</span><br><span class="line">            ymax = min(self.frame_height, max(y, self.drag_start[1]))</span><br><span class="line">            self.selection = (xmin, ymin, xmax-xmin, ymax-ymin)</span><br><span class="line">    #####display selection box#####</span><br><span class="line">    def display_selection(self):</span><br><span class="line">        if self.drag_start and self.is_rect_nonzero(self.selection):</span><br><span class="line">            x, y, w, h = self.selection</span><br><span class="line">            cv2.rectangle(self.marker_image, (x, y), (x + w, y + h), (0,255, 255), 2)</span><br><span class="line">    #####calculate if rect is zero#####</span><br><span class="line">    def is_rect_nonzero(self, rect):</span><br><span class="line">        try:</span><br><span class="line">            (_,_,w,h) = rect</span><br><span class="line">            return ((w&gt;0)and(h&gt;0))</span><br><span class="line">        except:</span><br><span class="line">            try:</span><br><span class="line">                ((_,_),(w,h),a) = rect</span><br><span class="line">                return (w &gt; 0) and (h &gt; 0)</span><br><span class="line">            except:</span><br><span class="line">                return False</span><br><span class="line">    #####rgb-image callback function#####</span><br><span class="line">    def rgb_image_callback(self, data):</span><br><span class="line">        start = time.time()</span><br><span class="line">        frame = data</span><br><span class="line">        if self.frame is None:</span><br><span class="line">            self.frame = frame.copy()</span><br><span class="line">            self.marker_image = np.zeros_like(frame)</span><br><span class="line">            self.frame_size = (frame.shape[1], frame.shape[0])</span><br><span class="line">            self.frame_width, self.frame_height = self.frame_size</span><br><span class="line">            cv2.imshow(self.window_name, self.frame)</span><br><span class="line">            cv2.setMouseCallback(self.window_name,self.onMouse)</span><br><span class="line">            cv2.waitKey(3)</span><br><span class="line">        else:</span><br><span class="line">            self.frame = frame.copy()</span><br><span class="line">            self.marker_image = np.zeros_like(frame)</span><br><span class="line">            processed_image = self.process_image(frame)</span><br><span class="line">            self.processed_image = processed_image.copy()</span><br><span class="line">            self.display_selection()</span><br><span class="line">            self.display_image = cv2.bitwise_or(self.processed_image,self.marker_image)</span><br><span class="line">            ###show track-box###</span><br><span class="line">            if self.track_box is not None and self.is_rect_nonzero(self.track_box):</span><br><span class="line">                tx, ty, tw, th = self.track_box</span><br><span class="line">                cv2.rectangle(self.display_image, (tx, ty), (tx+tw,ty+th), (0, 0, 0), 2)</span><br><span class="line">            ###show detect-box###</span><br><span class="line">            elif self.detect_box is not None and self.is_rect_nonzero(self.detect_box):</span><br><span class="line">                dx, dy, dw, dh = self.detect_box</span><br><span class="line">                cv2.rectangle(self.display_image, (dx, dy), (dx+dw,dy+dh), (255, 50, 50), 2)</span><br><span class="line">                ###calcate time and fps###</span><br><span class="line">            end = time.time()</span><br><span class="line">            duration = end - start</span><br><span class="line">            fps = int(1.0/duration)</span><br><span class="line">            self.cps_values.append(fps)</span><br><span class="line">            if len(self.cps_values)&gt;self.cps_n_values:</span><br><span class="line">                self.cps_values.pop(0)</span><br><span class="line">            self.cps = int(sum(self.cps_values)/len(self.cps_values))</span><br><span class="line">            font_face = cv2.FONT_HERSHEY_SIMPLEX</span><br><span class="line">            font_scale = 0.5</span><br><span class="line">            if self.frame_size[0] &gt;= 640:</span><br><span class="line">                vstart = 25</span><br><span class="line">                voffset = int(50+self.frame_size[1]/120.)</span><br><span class="line">            elif self.frame_size[0] == 320:</span><br><span class="line">                vstart = 15</span><br><span class="line">                voffset = int(35+self.frame_size[1]/120.)</span><br><span class="line">            else:</span><br><span class="line">                vstart = 10</span><br><span class="line">                voffset = int(20 + self.frame_size[1] / 120.)</span><br><span class="line">            cv2.putText(self.display_image, &quot;CPS: &quot; + str(self.cps), (10,vstart), font_face, font_scale,(255, 255, 0))</span><br><span class="line">            cv2.putText(self.display_image, &quot;RES: &quot; +str(self.frame_size[0]) + &quot;X&quot; + str(self.frame_size[1]), (10, voffset),font_face, font_scale, (255, 255, 0))</span><br><span class="line">            ###show result###</span><br><span class="line">            cv2.imshow(self.window_name, self.display_image)</span><br><span class="line">            cv2.waitKey(3)</span><br><span class="line">    #####process image#####</span><br><span class="line">    def process_image(self, frame):</span><br><span class="line">        return frame</span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    cap = cv2.VideoCapture(0)</span><br><span class="line">    trackerbase = TrackerBase(&apos;base&apos;)</span><br><span class="line">    while True:</span><br><span class="line">        ret, frame = cap.read()</span><br><span class="line">        x, y = frame.shape[0:2]</span><br><span class="line">        small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">        trackerbase.rgb_image_callback(small_frame)</span><br><span class="line">        if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">            break</span><br><span class="line">    cap.release()</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<p>camshift.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">from tracker_base import TrackerBase</span><br><span class="line">class Camshift(TrackerBase):</span><br><span class="line">    def __init__(self, window_name):</span><br><span class="line">        super(Camshift, self).__init__(window_name)</span><br><span class="line">        self.detect_box = None</span><br><span class="line">        self.track_box = None</span><br><span class="line">    def process_image(self, frame):</span><br><span class="line">        try:</span><br><span class="line">            if self.detect_box is None:</span><br><span class="line">                return frame</span><br><span class="line">            src = frame.copy()</span><br><span class="line">            if self.track_box is None or not self.is_rect_nonzero(self.track_box):</span><br><span class="line">                self.track_box = self.detect_box</span><br><span class="line">                x,y,w,h = self.track_box</span><br><span class="line">                self.roi = cv2.cvtColor(frame[y:y+h, x:x+w], cv2.COLOR_BGR2HSV)</span><br><span class="line">                roi_hist = cv2.calcHist([self.roi], [0], None, [16], [0, 180])</span><br><span class="line">                self.roi_hist = cv2.normalize(roi_hist, roi_hist, 0, 255, cv2.NORM_MINMAX)</span><br><span class="line">                self.term_crit = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10,1)</span><br><span class="line">            else:</span><br><span class="line">                hsv = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)</span><br><span class="line">                back_project = cv2.calcBackProject([hsv],[0],self.roi_hist,[0,180],1)</span><br><span class="line">                ret,self.track_box=cv2.CamShift(back_project,self.track_box,self.term_crit)</span><br><span class="line">                pts = cv2.boxPoints(ret)</span><br><span class="line">                pts = np.int0(pts)</span><br><span class="line">                cv2.polylines(frame,[pts],True,255,1)</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line">        return frame</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    cap = cv2.VideoCapture(0)</span><br><span class="line">    camshift = Camshift(&apos;camshift&apos;)</span><br><span class="line">    while True:</span><br><span class="line">        ret, frame = cap.read()</span><br><span class="line">        x, y = frame.shape[0:2]</span><br><span class="line">        small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">        camshift.rgb_image_callback(small_frame)</span><br><span class="line">        if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">            break</span><br><span class="line">    cap.release()</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<h1 id="九、光流法追踪"><a href="#九、光流法追踪" class="headerlink" title="九、光流法追踪"></a>九、光流法追踪</h1><p>光流的概念是 Gibson 在 1950 年首先提出来的。它是空间运动物体在观察成像平面上的像素运动的瞬时速度,是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找<br>到上一帧跟当前帧之间存在的对应关系,从而计算出相邻帧之间物体的运动信息的一种方法。一般而言,光流是由于场景中前景目标本身的移动、相机的运动,或者两者的共同运动所产生的。其计算方法可以分为三类:<br>(1)基于区域或者基于特征的匹配方法;<br>(2)基于频域的方法;<br>(3)基于梯度的方法;<br>简单来说,光流是空间运动物体在观测成像平面上的像素运动的“瞬时速度”。光流的研究是利用图像序列中的像素强度数据的时域变化和相关性来确定各自像素位置的“运动”。研究光流场的目的就是为了从图片序列中近似得到不能直接得到的运动场。</p>
+<h2 id="特征点提取"><a href="#特征点提取" class="headerlink" title="特征点提取"></a>特征点提取</h2><p>good_feature.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">from tracker_base import TrackerBase</span><br><span class="line">import numpy as np</span><br><span class="line">class GoodFeatures(TrackerBase):</span><br><span class="line">    def __init__(self, window_name):</span><br><span class="line">        super(GoodFeatures, self).__init__(window_name)</span><br><span class="line">        self.feature_size = 1</span><br><span class="line">        # Good features parameters</span><br><span class="line">        self.gf_maxCorners = 200</span><br><span class="line">        self.gf_qualityLevel = 0.02</span><br><span class="line">        self.gf_minDistance = 7</span><br><span class="line">        self.gf_blockSize = 10</span><br><span class="line">        self.gf_useHarrisDetector = True</span><br><span class="line">        self.gf_k = 0.04</span><br><span class="line">        # Store all parameters together for passing to the detector</span><br><span class="line">        self.gf_params = dict(maxCorners = self.gf_maxCorners,qualityLevel = self.gf_qualityLevel,minDistance = self.gf_minDistance,blockSize = self.gf_blockSize,useHarrisDetector = self.gf_useHarrisDetector,k = self.gf_k)</span><br><span class="line">        self.keypoints = list()</span><br><span class="line">        self.detect_box = None</span><br><span class="line">        self.mask = None</span><br><span class="line">    def process_image(self, frame):</span><br><span class="line">        try:</span><br><span class="line">            if not self.detect_box:</span><br><span class="line">                return frame</span><br><span class="line">            src = frame.copy()</span><br><span class="line">            gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)</span><br><span class="line">            gray = cv2.equalizeHist(gray)</span><br><span class="line">            keypoints = self.get_keypoints(gray, self.detect_box)</span><br><span class="line">            if keypoints is not None and len(keypoints) &gt; 0:</span><br><span class="line">                for x, y in keypoints:</span><br><span class="line">                    cv2.circle(self.marker_image, (x, y), self.feature_size, (0, 255, 0), -1)</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line">        return frame</span><br><span class="line">    def get_keypoints(self, input_image, detect_box):</span><br><span class="line">        self.mask = np.zeros_like(input_image)</span><br><span class="line">        try:</span><br><span class="line">            x, y, w, h = detect_box</span><br><span class="line">        except:</span><br><span class="line">            return None</span><br><span class="line">        self.mask[y:y+h, x:x+w] = 255</span><br><span class="line">        keypoints = list()</span><br><span class="line">        kp = cv2.goodFeaturesToTrack(input_image, mask = self.mask, **self.gf_params)</span><br><span class="line">        if kp is not None and len(kp) &gt; 0:</span><br><span class="line">            for x, y in np.float32(kp).reshape(-1, 2):</span><br><span class="line">                keypoints.append((x, y))</span><br><span class="line">        return keypoints</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    cap = cv2.VideoCapture(0)</span><br><span class="line">    goodfeatures = GoodFeatures(&apos;good_feature&apos;)</span><br><span class="line">    while True:</span><br><span class="line">        ret, frame = cap.read()</span><br><span class="line">        x, y = frame.shape[0:2]</span><br><span class="line">        small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">        goodfeatures.rgb_image_callback(small_frame)</span><br><span class="line">        if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">            break</span><br><span class="line">    cap.release()</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<h2 id="光流跟踪"><a href="#光流跟踪" class="headerlink" title="光流跟踪"></a>光流跟踪</h2><p>lk_tracker.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">from good_features import GoodFeatures</span><br><span class="line">class LKTracker(GoodFeatures):</span><br><span class="line">    def __init__(self, window_name):</span><br><span class="line">        super(LKTracker, self).__init__(window_name)</span><br><span class="line">        self.feature_size = 1</span><br><span class="line">        self.lk_winSize = (10, 10)</span><br><span class="line">        self.lk_maxLevel = 2</span><br><span class="line">        self.lk_criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 20, 0.01)</span><br><span class="line">        self.lk_params = dict( winSize = self.lk_winSize,maxLevel = self.lk_maxLevel,criteria = self.lk_criteria)</span><br><span class="line">        self.detect_interval = 1</span><br><span class="line">        self.keypoints = None</span><br><span class="line">        self.detect_box = None</span><br><span class="line">        self.track_box = None</span><br><span class="line">        self.mask = None</span><br><span class="line">        self.gray = None</span><br><span class="line">        self.prev_gray = None</span><br><span class="line">    def process_image(self, frame):</span><br><span class="line">        try:</span><br><span class="line">            if self.detect_box is None:</span><br><span class="line">                return frame</span><br><span class="line">            src = frame.copy()</span><br><span class="line">            self.gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)</span><br><span class="line">            self.gray = cv2.equalizeHist(self.gray)</span><br><span class="line">            if self.track_box is None or not self.is_rect_nonzero(self.track_box):</span><br><span class="line">                self.track_box = self.detect_box</span><br><span class="line">                self.keypoints = self.get_keypoints(self.gray, self.track_box)</span><br><span class="line">            else:</span><br><span class="line">                if self.prev_gray is None:</span><br><span class="line">                    self.prev_gray = self.gray</span><br><span class="line">                self.track_box = self.track_keypoints(self.gray, self.prev_gray)</span><br><span class="line">            self.prev_gray = self.gray</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line">        return frame</span><br><span class="line">    def track_keypoints(self, gray, prev_gray):</span><br><span class="line">        img0, img1 = prev_gray, gray</span><br><span class="line">        # Reshape the current keypoints into a numpy array required by calcOpticalFlowPyrLK()</span><br><span class="line">        p0 = np.float32([p for p in self.keypoints]).reshape(-1, 1, 2)</span><br><span class="line">        # Calculate the optical flow from the previous frame to the current frame</span><br><span class="line">        p1, st, err = cv2.calcOpticalFlowPyrLK(img0, img1, p0, None, **self.lk_params)</span><br><span class="line">        try:</span><br><span class="line">            # Do the reverse calculation: from the current frame to the previous frame</span><br><span class="line">            p0r, st, err = cv2.calcOpticalFlowPyrLK(img1, img0, p1, None, **self.lk_params)</span><br><span class="line">            # Compute the distance between corresponding points in the two flows</span><br><span class="line">            d = abs(p0-p0r).reshape(-1, 2).max(-1)</span><br><span class="line">            # If the distance between pairs of points is &lt; 1 pixel, set a value in the &quot;good&quot; array to True, otherwise False</span><br><span class="line">            good = d&lt;1</span><br><span class="line">            new_keypoints = list()</span><br><span class="line">            for(x, y), good_flag in zip(p1.reshape(-1, 2), good):</span><br><span class="line">                if not good_flag:</span><br><span class="line">                    continue</span><br><span class="line">                new_keypoints.append((x, y))</span><br><span class="line">                cv2.circle(self.marker_image, (x, y), self.feature_size, (255, 255, 0), -1)</span><br><span class="line">            self.keypoints = new_keypoints</span><br><span class="line">            # Convert the keypoints list to a numpy array</span><br><span class="line">            keypoints_array = np.float32([p for p in self.keypoints]).reshape(-1, 1, 2)</span><br><span class="line">            if len(self.keypoints)&gt;6:</span><br><span class="line">                track_box = cv2.boundingRect(keypoints_array)</span><br><span class="line">            else:</span><br><span class="line">                track_box = cv2.boundingRect(keypoints_array)</span><br><span class="line">        except:</span><br><span class="line">            track_box = None</span><br><span class="line">        return track_box</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    cap = cv2.VideoCapture(0)</span><br><span class="line">    lk_tracker = LKTracker(&apos;lk_tracker&apos;)</span><br><span class="line">    while True:</span><br><span class="line">        ret, frame = cap.read()</span><br><span class="line">        x, y = frame.shape[0:2]</span><br><span class="line">        small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">        lk_tracker.rgb_image_callback(small_frame)</span><br><span class="line">        if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">            break</span><br><span class="line">    cap.release()</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<h1 id="九、KCF-Kalman-目标跟踪"><a href="#九、KCF-Kalman-目标跟踪" class="headerlink" title="九、KCF+Kalman 目标跟踪"></a>九、KCF+Kalman 目标跟踪</h1><p>KCF 是一种鉴别式追踪方法,这类方法一般都是在追踪过程中训练一个目标检测器,使用目标检测器去检测下一帧预测位置是否是目标,然后再使用新检测结果去更新训练集进而更新目标检测器。而在训练目标检测器时一般选取目标区域为正样本,目标的周围区域为负样本,当然越靠近目标的区域为正样本的可能性越大。<br>Kcf 的主要贡献:<br>使用目标周围区域的循环矩阵采集正负样本,利用脊回归训练目标检测器,并成功的利用循环矩阵在傅里叶空间可对角化的性质将矩阵的运算转化为向量的 Hadamad 积,即元素的点乘,大大降低了运算量,提高了运算速度,使算法满足实时性要求。将线性空间的脊回归通过核函数映射到非线性空间,在非线性空间通过求解一个对偶问题和某些常见的约束,同样的可以使用循环矩阵傅里叶空间对角化简化计算。给出了一种将多通道数据融入该算法的途径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">from tracker_base import TrackerBase</span><br><span class="line">class KcfKalmanTracker(TrackerBase):</span><br><span class="line">    def __init__(self, window_name):</span><br><span class="line">        super(KcfKalmanTracker, self).__init__(window_name)</span><br><span class="line">        self.tracker = cv2.TrackerKCF_create()</span><br><span class="line">        self.detect_box = None</span><br><span class="line">        self.track_box = None</span><br><span class="line">        ####init kalman####</span><br><span class="line">        self.kalman = cv2.KalmanFilter(4, 2)</span><br><span class="line">        self.kalman.measurementMatrix = np.array([[1,0,0,0],[0,1,0,0]],np.float32)</span><br><span class="line">        self.kalman.transitionMatrix=np.array([[1,0,1,0],[0,1,0,1],[0,0,1,0],[0,0,0,1]],np.float32)</span><br><span class="line">        self.kalman.processNoiseCov=np.array([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]],np.float32)*0.03</span><br><span class="line">        self.measurement = np.array((2,1),np.float32)</span><br><span class="line">        self.prediction = np.array((2,1),np.float32)</span><br><span class="line">    def process_image(self, frame):</span><br><span class="line">        try:</span><br><span class="line">            if self.detect_box is None:</span><br><span class="line">                return frame</span><br><span class="line">            src = frame.copy()</span><br><span class="line">            if self.track_box is None or not self.is_rect_nonzero(self.track_box):</span><br><span class="line">                self.track_box = self.detect_box</span><br><span class="line">                if self.tracker is None:</span><br><span class="line">                    raise Exception(&quot;tracker not init&quot;)</span><br><span class="line">                status = self.tracker.init(src, self.track_box)</span><br><span class="line">                if not status:</span><br><span class="line">                    raise Exception(&quot;tracker initial failed&quot;)</span><br><span class="line">            else:</span><br><span class="line">                self.track_box = self.track(frame)</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line">        return frame</span><br><span class="line">    def track(self, frame):</span><br><span class="line">        status, coord = self.tracker.update(frame)</span><br><span class="line">        center=np.array([[np.float32(coord[0]+coord[2]/2)],[np.float32(coord[1]+coord[3]/2)]])</span><br><span class="line">        self.kalman.correct(center)</span><br><span class="line">        self.prediction = self.kalman.predict()</span><br><span class="line">        cv2.circle(frame, (int(self.prediction[0]),int(self.prediction[1])),4,(255,60,100),2)</span><br><span class="line">        round_coord = (int(coord[0]), int(coord[1]), int(coord[2]), int(coord[3]))</span><br><span class="line">        return round_coord</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    cap = cv2.VideoCapture(0)</span><br><span class="line">    kcfkalmantracker = KcfKalmanTracker(&apos;base&apos;)</span><br><span class="line">    while True:</span><br><span class="line">        ret, frame = cap.read()</span><br><span class="line">        x, y = frame.shape[0:2]</span><br><span class="line">        small_frame = cv2.resize(frame, (int(y/2), int(x/2)))</span><br><span class="line">        kcfkalmantracker.rgb_image_callback(small_frame)</span><br><span class="line">        if cv2.waitKey(1) &amp; 0xFF == ord(&apos;q&apos;):</span><br><span class="line">            break</span><br><span class="line">    cap.release()</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>文章参考德强师兄博客<a href="https://purethought.cn/" target="_blank" rel="noopener">https://purethought.cn/</a></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/08/26/Python学习笔记/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Python学习笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/07/06/微信整理/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                微信收藏整理</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 lzq<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine@1.3.4/dist/Valine.min.js"></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/lzqmove/CDN@1.2/img/custom/bg.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">LZQmove</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/资源/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/转载/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友  链
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  个人简历
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js id="2660651585" server="netease" type="playlist" fixed="true" autoplay="false" loop="all" order="random" preload="auto" volume="0.7" mutex="true" <="" meting-js="">
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script></meting-js>
+</body>
+</html>
