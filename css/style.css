@@ -1524,7 +1524,7 @@ a:hover,a:active {
     width:28px;
     margin-left:-15px;
     height:2px;
-    background:#666;
+    background:#111;
     -webkit-transition:all .2s ease
 }
 #show-nav.showNav .line1 {
@@ -4078,14 +4078,14 @@ li.feature-2 {
 .header-info {
     width:63%;
     margin:auto;
-    font-size:16px;
-    color:#eaeadf;
-    background:rgba(0,0,0,.5);
+    font-size:23px;
+    color:#ffffff;
+    background:rgba(0,0,0,.4);
     padding:15px;
     margin-top:22px;
     letter-spacing:0;
     line-height:30px;
-    border-radius:10px;
+    border-radius:20px;
     box-sizing:initial;
     white-space:nowrap
 }
@@ -4097,7 +4097,7 @@ li.feature-2 {
     margin-left:-15px;
     border-width:15px;
     border-style:solid;
-    border-color:transparent transparent rgba(0,0,0,.5) transparent
+    border-color:transparent transparent rgba(255,255,255,.5) transparent
 }
 .header-info p {
     margin:0;
