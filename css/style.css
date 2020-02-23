@@ -1524,7 +1524,7 @@ a:hover,a:active {
     width:28px;
     margin-left:-15px;
     height:2px;
-    background:#111;
+    background:#666;
     -webkit-transition:all .2s ease
 }
 #show-nav.showNav .line1 {
@@ -2022,8 +2022,8 @@ i.iconfont.hotpost {
 }
 .site-info {
     text-align:center;
-    font-size:13px;
-    color:#b9b9b9
+    font-size:15px;
+    color:#808080
 }
 .site-info a {
     color:#b9b9b9
@@ -2166,7 +2166,7 @@ h1.entry-title {
     vertical-align:sub
 }
 .entry-content p {
-    color:#797979
+    color:#202020
 }
 .entry-content p {
     line-height:30px
