@@ -838,7 +838,7 @@ td,th {
     padding:0
 }
 body,button,input,select,textarea {
-    color:#404040;
+    color:#ffffff;
     font-size:15px;
     line-height:1.5
 }
@@ -2014,29 +2014,29 @@ i.iconfont.hotpost {
     transition:all .2s ease-in-out
 }
 .site-footer {
-    padding:2%;
-    background:rgba(255,255,255,.8);
-    max-width:800px;
+    padding:0%;
+    background:rgba(0,11,63,1);
+    max-width:1367px;
     margin-left:auto;
     margin-right:auto
 }
 .site-info {
     text-align:center;
     font-size:15px;
-    color:#808080
+    color:#ffffff
 }
 .site-info a {
-    color:#b9b9b9
+    color:#ffffff
 }
 .site-info a:hover {
     color:orange
 }
 .footertext p {
-    margin-bottom:8px
+    margin-bottom:16px
 }
 .footertext .foo-logo {
-    width:30px;
-    height:30px;
+    width:0px;
+    height:0px;
     opacity:.3;
     margin:0 auto;
     background-size:cover;
@@ -4762,7 +4762,7 @@ i.iconfont.down {
         display:none
     }
     .site-footer {
-        padding:30px
+        padding:0px
     }
     .lower {
         display:none !important
@@ -4814,7 +4814,7 @@ i.iconfont.down {
     display:none
 }
 .site-footer {
-    padding:30px
+    padding:0px
 }
 .we-title:before {
     display:none
@@ -7462,7 +7462,7 @@ to {
     font-family:'Source Code Pro',monospace
 }
 .Ubuntu-font {
-    font-family:'Ubuntu',sans-serif
+    font-family:'SimHei',sans-serif
 }
 .serif {
     font-family:'Source Han Serif SC','Source Han Serif','source-han-serif-sc','PT Serif','SongTi SC','MicroSoft Yahei',Georgia,serif
