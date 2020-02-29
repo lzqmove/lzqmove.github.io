@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">C++学习--类与对象 | Mr.LZQ</title>
+  
+    <link rel="shortcut icon" href="/images/lolo.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "LZQ☘☘☘";
+  mashiro_option.author_name = "☘☘☘";
+  mashiro_option.site_url = "https://lzqmove.cn";
+  mashiro_option.v_appId = "wi1797eVGol8VJniNxxUuyBU-gzGzoHsz";
+  mashiro_option.v_appKey = "O5SKk9Lur8NHwO02ueP3M2OS";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(1).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(2).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(3).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(4).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(5).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(6).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(7).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(8).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(9).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(10).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(11).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(12).jpg.webp,https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/cover1/(13).jpg.webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop ">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://lzqmove.cn">
+          <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/custom/bg.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>临渊羡鱼，不如退而结网！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/lzqmove" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/u/5867515430?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/lzqmove" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://mail.163.com/" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://wpa.qq.com/msgrd?v=3&amp;uin=1948933904&amp;site=qq&amp;menu=yes" target="_blank" class="social-github" title="qq">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/social/qq.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">LZQ</span>
+            <span class="shironeko">☘☘☘</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    分类
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/学习技能/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          学习技能
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/软件工具/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          软件工具
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/编程提高/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          编程提高
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/论文材料/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          论文材料
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活随笔/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          生活随笔
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    休闲
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          列表
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友  链
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/Introduce/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          简历
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/gallery/">
+                          <i class="fa fa-camera" aria-hidden="true"></i>
+                          相册
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          标签
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/archives">
+                          <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+                          时光轴
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s2.ax1x.com/2020/02/29/3slnFe.png);" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      C++学习--类与对象</h1>
+      <p class="entry-census">
+        <span>
+          <a href="lzqmove.cn">
+            <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/custom/bg.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="lzqmove.cn">lzq</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-2-29<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p><strong>前言</strong><br>[重要连接，不懂请看]（<a href="https://blog.csdn.net/u013921430/article/details/79677249）" target="_blank" rel="noopener">https://blog.csdn.net/u013921430/article/details/79677249）</a><br>起初一看，这个概念貌似在c语言中并没有存在过，应该是属于c++的核心之一了吧，下面开始仔细学习。<br>首先，提出以下问题以供思考：</p>
+<p>• 什么是类和对象；<br>• 类如何帮助您整合数据和处理数据的函数；<br>• 构造函数、复制构造函数和析构函数；<br>• 移动构造函数是什么；<br>• 封装和抽象等面向对象的概念；<br>• this 指针；<br>• 结构是什么，它与类有何不同。</p>
+<h2 id="什么是类"><a href="#什么是类" class="headerlink" title="什么是类"></a>什么是类</h2><p>要在程序中模拟人，需要一个结构，如图所示，将定义人的属性（数据）以及人可使用这些属性执行的操作（函数）整合在一起。这种结构就是类。<br><img src="https://s2.ax1x.com/2020/02/29/3sy2NQ.png" alt="image.png"></p>
+<h2 id="声明类"><a href="#声明类" class="headerlink" title="声明类"></a>声明类</h2><p>要声明类，可使用关键字 class，并在它后面依次包含类名，一组放在{}内的成员属性和成员函数，<br>以及结尾的分号。</p>
+<p>模拟人类的类类似于下面这样:<br><strong>class Human<br>{<br> // Member attributes:<br> string name;<br> string dateOfBirth;<br> string placeOfBirth;<br> string gender;<br> // Member functions:<br> void Talk(string textToTalk);<br> void IntroduceSelf();<br> …<br>}; </strong></p>
+<p>封装指的是将数据以及使用它们的函数进行逻辑编组，这是面向对象编程的重要特征。<br>创建 Human 对象与创建其他类型（如 double）的实例类似：</p>
+<p>double pi= 3.1415;<br>Human firstMan;</p>
+<p>就像可以为其他类型（如 int）动态分配内存一样，也可使用 new 为 Human 对象动态地分配内存：</p>
+<p>int* pointsToNum = new int;<br>delete pointsToNum; </p>
+<p>Human* firstWoman = new Human();<br>delete firstWoman; </p>
+<h2 id="使用句点运算符访问成员"><a href="#使用句点运算符访问成员" class="headerlink" title="使用句点运算符访问成员"></a>使用句点运算符访问成员</h2><p>一个人的例子是 Adam，男性，1970 年出生于阿拉巴马州。firstMan 是 Human 类的对象，是这个<br>类存在于现实世界（运行阶段）的化身：</p>
+<p>Human firstMan;<br>firstMan.dateOfBirth = “1970”;    //    类声明表明，firstMan 有 dateOfBirth 等属性，可使用句点运算符（.）<br>firstMan.IntroduceSelf();                    来访问</p>
+<p>如果有一个指针 firstWoman，它指向 Human 类的一个实例，则可使用指针运算符（-&gt;）来访问成<br>员，也可使用 间接运算符（<em>） 来获取对象，再使用 句点运算符 来访问成员：<br>Human</em> firstWoman = new Human();<br>(*firstWoman).IntroduceSelf(); </p>
+<h2 id="使用指针运算符（-gt-）访问成员"><a href="#使用指针运算符（-gt-）访问成员" class="headerlink" title="使用指针运算符（-&gt;）访问成员"></a>使用指针运算符（-&gt;）访问成员</h2><pre><code> #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
+using namespace std; 
+ class Human 
+ { 
+  public: 
+  string name; 
+  int age; 
+void IntroduceSelf() 
+ { 
+cout &lt;&lt; &quot;I am &quot; + name &lt;&lt; &quot; and am &quot;; 
+cout &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; 
+ } 
+ }; 
+
+int main() 
+ { 
+Human firstMan; 
+firstMan.name = &quot;Adam&quot;; 
+firstMan.age = 30; 
+Human firstWoman; 
+firstWoman.name = &quot;Eve&quot;; 
+firstWoman.age = 28; 
+firstMan.IntroduceSelf(); 
+firstWoman.IntroduceSelf(); 
+ } 
+输出：I am Adam and am 30 years old 
+I am Eve and am 28 years old 
+</code></pre><h2 id="关键字-public-和-private"><a href="#关键字-public-和-private" class="headerlink" title="关键字 public 和 private"></a>关键字 public 和 private</h2><p>作为类的设计者，您可使用 C++关键字 public<br>和 private 来指定哪些部分可从外部（如 main( )）访问，哪些部分不能。</p>
+<pre><code class="程序实例">class Human 
+{ 
+private: 
+ // Private member data: 
+ int age; 
+ string name; 
+public: 
+ int GetAge() 
+ { 
+ return age; 
+ } 
+ void SetAge(int humansAge) 
+ { 
+ age = humansAge; 
+ } 
+// ...Other members and declarations 
+}; 
+
+Human eve; 
+cout &lt;&lt; eve.age; // compile error 
+cout &lt;&lt; eve.GetAge(); // OK 
+</code></pre>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数是一种特殊的函数，它与类同名且不返回任何值。<br>声明如下：</p>
+<pre><code class="1">class Human 
+{ 
+public: 
+ Human(); // declaration of a constructor 
+}; 
+</code></pre>
+<pre><code class="2">class Human 
+{ 
+public: 
+ Human() 
+ { 
+ // constructor code here 
+ } 
+}; 
+</code></pre>
+<pre><code class="3">class Human 
+{ 
+public: 
+ Human(); // constructor declaration 
+}; 
+// constructor implementation (definition) 
+Human::Human() 
+{ 
+ // constructor code here 
+} 
+</code></pre>
+<p><strong>补充：</strong>   ::被称为作用域解析运算符。例如，Human::dateOfBirth 指的是在 Human 类  中  声明的变量 dateOfBirth，而::dateOfBirth 表示全局作用域中的变量 dateOfBirth。</p>
+<pre><code class="使用构造函数初始化类成员变量">
+  #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
+using namespace std; 
+class Human 
+ { 
+private: 
+string name; 
+ int age; 
+ public: 
+ Human() // constructor 
+ { 
+ age = 1; // initialization 
+cout &lt;&lt; &quot;Constructed an instance of class Human&quot; &lt;&lt; endl; 
+ } 
+void SetName (string humansName) 
+{ 
+ name = humansName; 
+ } 
+ void SetAge(int humansAge) 
+{ 
+ age = humansAge; 
+ } 
+ void IntroduceSelf() 
+ { 
+ cout &lt;&lt; &quot;I am &quot; + name &lt;&lt; &quot; and am &quot;; 
+cout &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; 
+ } 
+}; 
+int main() 
+{ 
+ Human firstWoman; 
+ firstWoman.SetName(&quot;Eve&quot;); 
+ firstWoman.SetAge (28); 
+ firstWoman.IntroduceSelf(); 
+} 
+输出：
+Constructed an instance of class Human 
+I am Eve and am 28 years old 
+</code></pre>
+<h2 id="重载构造函数"><a href="#重载构造函数" class="headerlink" title="重载构造函数"></a>重载构造函数</h2><pre><code class="例程">  #include &lt;iostream&gt; 
+  #include &lt;string&gt; 
+  using namespace std;  
+  class Human 
+  { 
+  private: 
+  string name; 
+  int age; 
+ public: 
+ Human()
+ { 
+ age = 0;
+ cout &lt;&lt; &quot;Default constructor: name and age not set&quot; &lt;&lt; endl; 
+ }  
+ Human(string humansName, int humansAge) 
+ { 
+ name = humansName; 
+ age = humansAge; 
+cout &lt;&lt; &quot;Overloaded constructor creates &quot;; 
+cout &lt;&lt; name &lt;&lt; &quot; of &quot; &lt;&lt; age &lt;&lt; &quot; years&quot; &lt;&lt; endl; 
+} 
+}; 
+int main() 
+{ 
+Human firstMan; 
+Human firstWoman (&quot;Eve&quot;, 20);  
+ } 
+输出：
+Default constructor: name and age not set 
+Overloaded constructor creates Eve of 20 years 
+</code></pre>
+<h2 id="包含初始化列表的构造函数"><a href="#包含初始化列表的构造函数" class="headerlink" title="包含初始化列表的构造函数"></a>包含初始化列表的构造函数</h2><pre><code class="程序清单9接受带默认值的参数的默认构造函数-并使用初始化列表来设置成员">
+ #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
+using namespace std; 
+ class Human 
+ { 
+private: 
+     int age; 
+      string name; 
+ public: 
+   Human(string humansName = &quot;Adam&quot;, int humansAge = 25) 
+              :name(humansName), age(humansAge) 
+  { 
+cout &lt;&lt; &quot;Constructed a human called &quot; &lt;&lt; name; 
+cout &lt;&lt; &quot;, &quot; &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; 
+ } 
+}; 
+ int main() 
+ { 
+Human adam; 
+ Human eve(&quot;Eve&quot;, 18); 
+ return 0; 
+} 
+输出：
+Constructed a human called Adam, 25 years old 
+Constructed a human called Eve, 18 years old 
+</code></pre>
+<h2 id="析构函数-析构函数-析构函数"><a href="#析构函数-析构函数-析构函数" class="headerlink" title="析构函数 析构函数 析构函数"></a>析构函数 析构函数 析构函数</h2><p>与构造函数一样，析构函数也是一种特殊的函数。<strong>构造函数在实例化对象时被调用，而析构函数<br>在对象销毁时自动被调用。</strong><br>析构函数看起来像一个与类同名的函数，但前面有一个腭化符号（～）。因此，Human 类的析构函<br>数的声明类似于下面这样:</p>
+<pre><code class="1">class Human 
+{ 
+ ~Human(); // declaration of a destructor 
+}; 
+</code></pre>
+<pre><code class="2">class Human 
+{ 
+public: 
+ ~Human() 
+ { 
+ // destructor code here 
+ } 
+}; 
+</code></pre>
+<pre><code class="3">class Human 
+{ 
+public: 
+ ~Human(); 
+}; 
+
+Human::~Human() 
+{ 
+
+} 
+</code></pre>
+<p><strong>析构函数的功能</strong>：每当对象不再在作用域内或通过 delete 被删除进而被销毁时，都将调用析构函数。这使得析构函数成为重置变量以及释放动态分配的内存和其他资源的理想场所。</p>
+<pre><code class="一个简单的类它封装了字符缓冲区并通析构函数释放它">
+ #include &lt;iostream&gt; 
+ #include &lt;string.h&gt; 
+ using namespace std; 
+ class MyString 
+ { 
+ private: 
+    char* buffer; 
+ public: 
+    MyString(const char* initString) 
+   { 
+   if(initString != NULL) 
+   { 
+   buffer = new char [strlen(initString) + 1]; 
+   strcpy(buffer, initString); 
+    } 
+ else 
+   buffer = NULL; 
+    } 
+
+ ~MyString() 
+   { 
+  cout &lt;&lt; &quot;Invoking destructor, clearing up&quot; &lt;&lt; endl; 
+  if (buffer != NULL) 
+  delete [] buffer; 
+  } 
+
+ int GetLength() 
+   { 
+  return strlen(buffer); 
+   } 
+
+ const char* GetString() 
+   { 
+   return buffer; 
+   } 
+ }; 
+
+int main() 
+   { 
+ MyString sayHello(&quot;Hello from String Class&quot;); 
+ cout &lt;&lt; &quot;String buffer in sayHello is &quot; &lt;&lt; sayHello.GetLength(); 
+ cout &lt;&lt; &quot; characters long&quot; &lt;&lt; endl; 
+ cout &lt;&lt; &quot;Buffer contains: &quot; &lt;&lt; sayHello.GetString() &lt;&lt; endl; 
+ } 
+
+输出：
+String buffer in sayHello is 23 characters long 
+Buffer contains: Hello from String Class 
+Invoking destructor, clearing up 
+</code></pre>
+<h2 id="使用关键字explicit可以避免隐式转换"><a href="#使用关键字explicit可以避免隐式转换" class="headerlink" title="使用关键字explicit可以避免隐式转换"></a>使用关键字explicit可以避免隐式转换</h2><h2 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h2><p>在类中，关键字 this 包含当前对象的地址，换句话说，其值为&amp;object。<br>分析如下：</p>
+<pre><code>class Human 
+{ 
+private: 
+  void Talk (string Statement) 
+  cout &lt;&lt; Statement; 
+ } 
+public: 
+ void IntroduceSelf() 
+ { 
+ Talk(&quot;Bla bla&quot;); // same as Talk(this, &quot;Bla Bla&quot;) 
+ } 
+}; 
+</code></pre><p>在这里，方法 IntroduceSelf( )使用私有成员 Talk( )在屏幕上显示一句话。实际上，编译器将在调用<br>Talk 时嵌入 this 指针，即 Talk(this, “Blab la”)</p>
+<h2 id="将-sizeof-用于类"><a href="#将-sizeof-用于类" class="headerlink" title="将 sizeof( )用于类"></a>将 sizeof( )用于类</h2><p>运算符 sizeof( )用于确定指定类型需要多少内存，单位为字节。这个运算符也可用于类，在这种情<br>况下，它将指出类声明中所有数据属性占用的总内存量，单位为字节。</p>
+<pre><code class="**应用如下**">
+#include &lt;iostream&gt; 
+#include &lt;string.h&gt; 
+using namespace std; 
+class MyString 
+{ 
+private: 
+char* buffer; 
+
+public: 
+MyString(const char* initString) // default constructor 
+{ 
+buffer = NULL; 
+if(initString != NULL) 
+{ 
+buffer = new char [strlen(initString) + 1]; 
+strcpy(buffer, initString); 
+} 
+} 
+
+MyString(const MyString&amp; copySource) // copy constructor 
+{ 
+buffer = NULL; 
+if(copySource.buffer != NULL) 
+{ 
+buffer = new char [strlen(copySource.buffer) + 1]; 
+strcpy(buffer, copySource.buffer); 
+} 
+} 
+
+~MyString() 
+{ 
+delete [] buffer; 
+} 
+
+int GetLength() 
+{ return strlen(buffer); } 
+
+const char* GetString() 
+{ return buffer; } 
+}; 
+
+class Human 
+{ 
+private: 
+int age; 
+bool gender; 
+MyString name; 
+
+public: 
+Human(const MyString&amp; InputName, int InputAge, bool gender) 
+: name(InputName), age (InputAge), gender(gender) {} 
+
+int GetAge () 
+{ return age; } 
+}; 
+
+int main() 
+{ 
+MyString mansName(&quot;Adam&quot;); 
+MyString womansName(&quot;Eve&quot;); 
+
+cout &lt;&lt; &quot;sizeof(MyString) = &quot; &lt;&lt; sizeof(MyString) &lt;&lt; endl; 
+cout &lt;&lt; &quot;sizeof(mansName) = &quot; &lt;&lt; sizeof(mansName) &lt;&lt; endl; 
+cout &lt;&lt; &quot;sizeof(womansName) = &quot; &lt;&lt; sizeof(womansName) &lt;&lt; endl; 
+
+Human firstMan(mansName, 25, true); 
+Human firstWoman(womansName, 18, false); 
+
+cout &lt;&lt; &quot;sizeof(Human) = &quot; &lt;&lt; sizeof(Human) &lt;&lt; endl; 
+cout &lt;&lt; &quot;sizeof(firstMan) = &quot; &lt;&lt; sizeof(firstMan) &lt;&lt; endl; 
+cout &lt;&lt; &quot;sizeof(firstWoman) = &quot; &lt;&lt; sizeof(firstWoman) &lt;&lt; endl; 
+
+return 0; 
+} 
+
+输出;
+sizeof(MyString) = 4 
+sizeof(mansName) = 4 
+sizeof(womansName) = 4 
+sizeof(Human) = 12 
+sizeof(firstMan) = 12 
+sizeof(firstWoman) = 12 
+</code></pre>
+<h2 id="结构不同于类的地方"><a href="#结构不同于类的地方" class="headerlink" title="结构不同于类的地方"></a>结构不同于类的地方</h2><p>关键字 struct 来自 C 语言，在 C++编译器看来，它与类及其相似，差别在于程序员未指定时，默<br>认的访问限定符（public 和 private）不同。因此，除非指定了，否则结构中的成员默认为公有的（而<br>类成员默认为私有的）；另外，除非指定了，否则结构以公有方式继承基结构（而类为私有继承）。<br>结构可以不注明公有的部分。</p>
+<h2 id="声明友元"><a href="#声明友元" class="headerlink" title="声明友元"></a>声明友元</h2><p>不能从外部访问类的私有数据成员和方法，但这条规则不适用于友元类和友元函数。要声明友元<br>类或友元函数，可使用关键字 friend，</p>
+<pre><code class="使用关键字friend让外部函数DisplayAge能够访问私有数据成员">
+ #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
+ using namespace std; 
+ class Human 
+ { 
+ private: 
+      friend void DisplayAge(const Human&amp; person); //函数 DisplayAge( )是全局函数，还是 Human 类的友元，因此能够访问Human 类的私有数据成员。
+    string name; 
+ int age; 
+
+ public: 
+ Human(string humansName, int humansAge) 
+  { 
+   name = humansName; 
+   age = humansAge; 
+  } 
+  }; 
+
+ void DisplayAge(const Human&amp; person) 
+{ 
+ cout &lt;&lt; person.age &lt;&lt; endl; 
+ } 
+
+ int main() 
+ { 
+ Human firstMan(&quot;Adam&quot;, 25); 
+ cout &lt;&lt; &quot;Accessing private member age via friend function: &quot;; 
+ DisplayAge(firstMan); 
+ return 0; 
+ } 
+
+输出
+Accessing private member age via friend function: 25 
+</code></pre>
+<pre><code>使用关键字  friend  让  外部类 Utility   能够访问  私有数据成员
+ #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
+ using namespace std; 
+
+ class Human 
+ { 
+  private: 
+    friend class Utility;  //指出 Utility 类是 Human 类的友元，该声明让 Utility 类的所有方法都能访问 Human 类的私有数据成员和方法。
+   string name; 
+ int age; 
+
+ public: 
+ Human(string humansName, int humansAge) 
+ { 
+  name = humansName; 
+  age = humansAge; 
+ } 
+ }; 
+
+ class Utility 
+ { 
+ public: 
+ static void DisplayAge(const Human&amp; person) 
+ { 
+ cout &lt;&lt; person.age &lt;&lt; endl; 
+ } 
+ };  
+ int main() 
+ { 
+ Human firstMan(&quot;Adam&quot;, 25); 
+ cout &lt;&lt; &quot;Accessing private member age via friend class: &quot;; 
+ Utility::DisplayAge(firstMan); 
+ return 0; 
+ } 
+输出：
+Accessing private member age via friend class: 25
+</code></pre><h2 id="共用体"><a href="#共用体" class="headerlink" title="共用体"></a>共用体</h2><p>共用体是一种特殊的类，每次只有一个非静态数据成员处于活动状态。因此，共用体与类一样，<br>可包含多个数据成员，但不同的是只能使用其中的一个。<br>要声明共用体，可使用关键字 union ，如下所示<br>union UnionName<br>{<br> Type1 member1;<br> Type2 member2;<br>…<br> TypeN memberN;<br>};<br>要实例化并使用共用体，可像下面这样做：<br>UnionName unionObject;<br>unionObject.member2 = value;<br>猪猪猪猪猪：与结构类似，共用体的成员默认也是公有的，将 sizeof()用于共用体时，结果总是为共用体最大成员的长度，即便该成员并不处于活动状态。</p>
+<h2 id="聚合初始化"><a href="#聚合初始化" class="headerlink" title="聚合初始化"></a>聚合初始化</h2><p>下面的结构符合成为聚合类型的条件：<br>struct Aggregate1<br>{<br> int num;<br> double pi;<br>};<br>可将其作为一个整体进行初始化：<br>Aggregate1 a1{ 2017, 3.14 };<br>再来看一个例子：<br>struct Aggregate2<br>{<br> int num;<br> char hello[6];<br> int impYears[5];<br>};<br>对于这个结构，可像下面这样进行初始化：<br>Aggregate2 a2 {42, {‘h’, ‘e’, ‘l’, ‘l’, ‘o’}, {1998, 2003, 2011, 2014, 2017}}; </p>
+<hr>
+<p> 文章依据21天学通C++第八版，纯属小白自学！！！！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/custom/donate/WeChanQR.png"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/02/29/c++学习之继承/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                C++学习--继承</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/02/29/python-opencv/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Python-opencv-应用</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "wi1797eVGol8VJniNxxUuyBU-gzGzoHsz",
+        appKey: "O5SKk9Lur8NHwO02ueP3M2OS",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="lzqmove.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/custom/bg.jpg" itemprop="image" alt="lzq" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="lzqmove.cn" itemprop="url" rel="author">lzq</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>继续努力</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 lzq<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.0/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.0/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #ffffff;">&copy 2020</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #ffffff;">Author: <a href="https://github.com/lzqmove" target="_blank" style="color: #ffffff;;text-decoration: underline dotted rgba(0, 0, 0, .1);">李志强</a> <i class="iconfont icon-sakura rotating" style="color: #ffffff;display:inline-block"></i> Email <a href="https://lzqmove.cn/" target="_blank" style="color: #ffffff;;text-decoration: underline dotted rgba(0, 0, 0, .1);">：</a><a href="https://lzqmove.cn/" target="_blank" style="color: #ffffff;;text-decoration: underline dotted rgba(0, 0, 0, .1);">lzq_move@163.com</a>, 感谢访问☘☘☘</a><span id="busuanzi_container_site_pv"><i class="fa fa-heart-o"></i>本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span></span>
+    <span id="busuanzi_container_site_uv"class="fa fa-users"></i>次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.</span>
+
+
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/video/","name":"L1.mp4,L2.mp4,L3.mp4,L4.mp4,L5.mp4,L6.mp4,L7.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/video/","name":"L1.mp4,L2.mp4,L3.mp4,L4.mp4,L5.mp4,L6.mp4,L7.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?96fcb6019132445455cd4f9384a375dd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js"></script>
+  <script src="js/wenzi.js"></script>
+  <div class="skin-menu no-select" id="mainskin" style="position: fixed">
+ <div class="theme-controls row-container">
+  <ul class="menu-list">
+   <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+   <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+   <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+   <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+   <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+   <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+   <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+   <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+  </ul>
+ </div>
+</div>
+<canvas id="night-mode-cover"></canvas> 
+  <div class="changeSkin-gear no-select">
+  <div class="keys" id="setbtn"> 
+   <span id="open-skinMenu"> 切换主题 | SCHEME TOOL  
+     <i class="iconfont icon-gear inline-block rotating"></i> 
+   </span>
+  </div>
+</div>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/custom/bg.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">LZQ☘☘☘</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/lzqmove" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://music.163.com/" class="fa fa-music" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1948933904&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            分类
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/学习技能/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  学习技能
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/软件工具/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  软件工具
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/编程提高/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  编程提高
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/论文材料/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  论文材料
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活随笔/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  生活随笔
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            休闲
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  列表
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友  链
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/Introduce/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  简历
+                </a>
+              </li>
+            
+              <li>
+                <a href="/gallery/">
+                  <i class="fa fa-camera" aria-hidden="true"></i>
+                  相册
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+                  时光轴
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2738649682"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
