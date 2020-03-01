@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">C++学习--类与对象 | Mr.LZQ</title>
+  <title itemprop="name">C++学习--变量 | Mr.LZQ</title>
   
     <link rel="shortcut icon" href="/images/lolo.ico">
   
@@ -383,7 +383,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      C++学习--类与对象</h1>
+      C++学习--变量</h1>
       <p class="entry-census">
         <span>
           <a href="lzqmove.cn">
@@ -409,451 +409,60 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p><strong>前言</strong><br>[重要连接，不懂请看]（<a href="https://blog.csdn.net/u013921430/article/details/79677249）" target="_blank" rel="noopener">https://blog.csdn.net/u013921430/article/details/79677249）</a><br>起初一看，这个概念貌似在c语言中并没有存在过，应该是属于c++的核心之一了吧，下面开始仔细学习。<br>首先，提出以下问题以供思考：</p>
-<p>• 什么是类和对象；<br>• 类如何帮助您整合数据和处理数据的函数；<br>• 构造函数、复制构造函数和析构函数；<br>• 移动构造函数是什么；<br>• 封装和抽象等面向对象的概念；<br>• this 指针；<br>• 结构是什么，它与类有何不同。</p>
-<h2 id="什么是类"><a href="#什么是类" class="headerlink" title="什么是类"></a>什么是类</h2><p>要在程序中模拟人，需要一个结构，如图所示，将定义人的属性（数据）以及人可使用这些属性执行的操作（函数）整合在一起。这种结构就是类。<br><img src="https://s2.ax1x.com/2020/02/29/3sy2NQ.png" alt="image.png"></p>
-<h2 id="声明类"><a href="#声明类" class="headerlink" title="声明类"></a>声明类</h2><p>要声明类，可使用关键字 class，并在它后面依次包含类名，一组放在{}内的成员属性和成员函数，<br>以及结尾的分号。</p>
-<p>模拟人类的类类似于下面这样:<br><strong>class Human<br>{<br> // Member attributes:<br> string name;<br> string dateOfBirth;<br> string placeOfBirth;<br> string gender;<br> // Member functions:<br> void Talk(string textToTalk);<br> void IntroduceSelf();<br> …<br>}; </strong></p>
-<p>封装指的是将数据以及使用它们的函数进行逻辑编组，这是面向对象编程的重要特征。<br>创建 Human 对象与创建其他类型（如 double）的实例类似：</p>
-<p>double pi= 3.1415;<br>Human firstMan;</p>
-<p>就像可以为其他类型（如 int）动态分配内存一样，也可使用 new 为 Human 对象动态地分配内存：</p>
-<p>int* pointsToNum = new int;<br>delete pointsToNum; </p>
-<p>Human* firstWoman = new Human();<br>delete firstWoman; </p>
-<h2 id="使用句点运算符访问成员"><a href="#使用句点运算符访问成员" class="headerlink" title="使用句点运算符访问成员"></a>使用句点运算符访问成员</h2><p>一个人的例子是 Adam，男性，1970 年出生于阿拉巴马州。firstMan 是 Human 类的对象，是这个<br>类存在于现实世界（运行阶段）的化身：</p>
-<p>Human firstMan;<br>firstMan.dateOfBirth = “1970”;    //    类声明表明，firstMan 有 dateOfBirth 等属性，可使用句点运算符（.）<br>firstMan.IntroduceSelf();                    来访问</p>
-<p>如果有一个指针 firstWoman，它指向 Human 类的一个实例，则可使用指针运算符（-&gt;）来访问成<br>员，也可使用 间接运算符（<em>） 来获取对象，再使用 句点运算符 来访问成员：<br>Human</em> firstWoman = new Human();<br>(*firstWoman).IntroduceSelf(); </p>
-<h2 id="使用指针运算符（-gt-）访问成员"><a href="#使用指针运算符（-gt-）访问成员" class="headerlink" title="使用指针运算符（-&gt;）访问成员"></a>使用指针运算符（-&gt;）访问成员</h2><pre><code> #include &lt;iostream&gt; 
- #include &lt;string&gt; 
-using namespace std; 
- class Human 
- { 
-  public: 
-  string name; 
-  int age; 
-void IntroduceSelf() 
- { 
-cout &lt;&lt; &quot;I am &quot; + name &lt;&lt; &quot; and am &quot;; 
-cout &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; 
- } 
- }; 
-
-int main() 
- { 
-Human firstMan; 
-firstMan.name = &quot;Adam&quot;; 
-firstMan.age = 30; 
-Human firstWoman; 
-firstWoman.name = &quot;Eve&quot;; 
-firstWoman.age = 28; 
-firstMan.IntroduceSelf(); 
-firstWoman.IntroduceSelf(); 
- } 
-输出：I am Adam and am 30 years old 
-I am Eve and am 28 years old 
-</code></pre><h2 id="关键字-public-和-private"><a href="#关键字-public-和-private" class="headerlink" title="关键字 public 和 private"></a>关键字 public 和 private</h2><p>作为类的设计者，您可使用 C++关键字 public<br>和 private 来指定哪些部分可从外部（如 main( )）访问，哪些部分不能。</p>
-<pre><code class="程序实例">class Human 
-{ 
-private: 
- // Private member data: 
- int age; 
- string name; 
-public: 
- int GetAge() 
- { 
- return age; 
- } 
- void SetAge(int humansAge) 
- { 
- age = humansAge; 
- } 
-// ...Other members and declarations 
-}; 
-
-Human eve; 
-cout &lt;&lt; eve.age; // compile error 
-cout &lt;&lt; eve.GetAge(); // OK 
-</code></pre>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数是一种特殊的函数，它与类同名且不返回任何值。<br>声明如下：</p>
-<pre><code class="1">class Human 
-{ 
-public: 
- Human(); // declaration of a constructor 
-}; 
-</code></pre>
-<pre><code class="2">class Human 
-{ 
-public: 
- Human() 
- { 
- // constructor code here 
- } 
-}; 
-</code></pre>
-<pre><code class="3">class Human 
-{ 
-public: 
- Human(); // constructor declaration 
-}; 
-// constructor implementation (definition) 
-Human::Human() 
-{ 
- // constructor code here 
-} 
-</code></pre>
-<p><strong>补充：</strong>   ::被称为作用域解析运算符。例如，Human::dateOfBirth 指的是在 Human 类  中  声明的变量 dateOfBirth，而::dateOfBirth 表示全局作用域中的变量 dateOfBirth。</p>
-<pre><code class="使用构造函数初始化类成员变量">
-  #include &lt;iostream&gt; 
- #include &lt;string&gt; 
-using namespace std; 
-class Human 
- { 
-private: 
-string name; 
- int age; 
- public: 
- Human() // constructor 
- { 
- age = 1; // initialization 
-cout &lt;&lt; &quot;Constructed an instance of class Human&quot; &lt;&lt; endl; 
- } 
-void SetName (string humansName) 
-{ 
- name = humansName; 
- } 
- void SetAge(int humansAge) 
-{ 
- age = humansAge; 
- } 
- void IntroduceSelf() 
- { 
- cout &lt;&lt; &quot;I am &quot; + name &lt;&lt; &quot; and am &quot;; 
-cout &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; 
- } 
-}; 
-int main() 
-{ 
- Human firstWoman; 
- firstWoman.SetName(&quot;Eve&quot;); 
- firstWoman.SetAge (28); 
- firstWoman.IntroduceSelf(); 
-} 
-输出：
-Constructed an instance of class Human 
-I am Eve and am 28 years old 
-</code></pre>
-<h2 id="重载构造函数"><a href="#重载构造函数" class="headerlink" title="重载构造函数"></a>重载构造函数</h2><pre><code class="例程">  #include &lt;iostream&gt; 
-  #include &lt;string&gt; 
-  using namespace std;  
-  class Human 
-  { 
-  private: 
-  string name; 
-  int age; 
- public: 
- Human()
- { 
- age = 0;
- cout &lt;&lt; &quot;Default constructor: name and age not set&quot; &lt;&lt; endl; 
- }  
- Human(string humansName, int humansAge) 
- { 
- name = humansName; 
- age = humansAge; 
-cout &lt;&lt; &quot;Overloaded constructor creates &quot;; 
-cout &lt;&lt; name &lt;&lt; &quot; of &quot; &lt;&lt; age &lt;&lt; &quot; years&quot; &lt;&lt; endl; 
-} 
-}; 
-int main() 
-{ 
-Human firstMan; 
-Human firstWoman (&quot;Eve&quot;, 20);  
- } 
-输出：
-Default constructor: name and age not set 
-Overloaded constructor creates Eve of 20 years 
-</code></pre>
-<h2 id="包含初始化列表的构造函数"><a href="#包含初始化列表的构造函数" class="headerlink" title="包含初始化列表的构造函数"></a>包含初始化列表的构造函数</h2><pre><code class="程序清单9接受带默认值的参数的默认构造函数-并使用初始化列表来设置成员">
- #include &lt;iostream&gt; 
- #include &lt;string&gt; 
-using namespace std; 
- class Human 
- { 
-private: 
-     int age; 
-      string name; 
- public: 
-   Human(string humansName = &quot;Adam&quot;, int humansAge = 25) 
-              :name(humansName), age(humansAge) 
-  { 
-cout &lt;&lt; &quot;Constructed a human called &quot; &lt;&lt; name; 
-cout &lt;&lt; &quot;, &quot; &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; 
- } 
-}; 
- int main() 
- { 
-Human adam; 
- Human eve(&quot;Eve&quot;, 18); 
- return 0; 
-} 
-输出：
-Constructed a human called Adam, 25 years old 
-Constructed a human called Eve, 18 years old 
-</code></pre>
-<h2 id="析构函数-析构函数-析构函数"><a href="#析构函数-析构函数-析构函数" class="headerlink" title="析构函数 析构函数 析构函数"></a>析构函数 析构函数 析构函数</h2><p>与构造函数一样，析构函数也是一种特殊的函数。<strong>构造函数在实例化对象时被调用，而析构函数<br>在对象销毁时自动被调用。</strong><br>析构函数看起来像一个与类同名的函数，但前面有一个腭化符号（～）。因此，Human 类的析构函<br>数的声明类似于下面这样:</p>
-<pre><code class="1">class Human 
-{ 
- ~Human(); // declaration of a destructor 
-}; 
-</code></pre>
-<pre><code class="2">class Human 
-{ 
-public: 
- ~Human() 
- { 
- // destructor code here 
- } 
-}; 
-</code></pre>
-<pre><code class="3">class Human 
-{ 
-public: 
- ~Human(); 
-}; 
-
-Human::~Human() 
-{ 
-
-} 
-</code></pre>
-<p><strong>析构函数的功能</strong>：每当对象不再在作用域内或通过 delete 被删除进而被销毁时，都将调用析构函数。这使得析构函数成为重置变量以及释放动态分配的内存和其他资源的理想场所。</p>
-<pre><code class="一个简单的类它封装了字符缓冲区并通析构函数释放它">
- #include &lt;iostream&gt; 
- #include &lt;string.h&gt; 
- using namespace std; 
- class MyString 
- { 
- private: 
-    char* buffer; 
- public: 
-    MyString(const char* initString) 
-   { 
-   if(initString != NULL) 
-   { 
-   buffer = new char [strlen(initString) + 1]; 
-   strcpy(buffer, initString); 
-    } 
- else 
-   buffer = NULL; 
-    } 
-
- ~MyString() 
-   { 
-  cout &lt;&lt; &quot;Invoking destructor, clearing up&quot; &lt;&lt; endl; 
-  if (buffer != NULL) 
-  delete [] buffer; 
-  } 
-
- int GetLength() 
-   { 
-  return strlen(buffer); 
-   } 
-
- const char* GetString() 
-   { 
-   return buffer; 
-   } 
- }; 
-
-int main() 
-   { 
- MyString sayHello(&quot;Hello from String Class&quot;); 
- cout &lt;&lt; &quot;String buffer in sayHello is &quot; &lt;&lt; sayHello.GetLength(); 
- cout &lt;&lt; &quot; characters long&quot; &lt;&lt; endl; 
- cout &lt;&lt; &quot;Buffer contains: &quot; &lt;&lt; sayHello.GetString() &lt;&lt; endl; 
- } 
-
-输出：
-String buffer in sayHello is 23 characters long 
-Buffer contains: Hello from String Class 
-Invoking destructor, clearing up 
-</code></pre>
-<h2 id="使用关键字explicit可以避免隐式转换"><a href="#使用关键字explicit可以避免隐式转换" class="headerlink" title="使用关键字explicit可以避免隐式转换"></a>使用关键字explicit可以避免隐式转换</h2><h2 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h2><p>在类中，关键字 this 包含当前对象的地址，换句话说，其值为&amp;object。<br>分析如下：</p>
-<pre><code>class Human 
-{ 
-private: 
-  void Talk (string Statement) 
-  cout &lt;&lt; Statement; 
- } 
-public: 
- void IntroduceSelf() 
- { 
- Talk(&quot;Bla bla&quot;); // same as Talk(this, &quot;Bla Bla&quot;) 
- } 
-}; 
-</code></pre><p>在这里，方法 IntroduceSelf( )使用私有成员 Talk( )在屏幕上显示一句话。实际上，编译器将在调用<br>Talk 时嵌入 this 指针，即 Talk(this, “Blab la”)</p>
-<h2 id="将-sizeof-用于类"><a href="#将-sizeof-用于类" class="headerlink" title="将 sizeof( )用于类"></a>将 sizeof( )用于类</h2><p>运算符 sizeof( )用于确定指定类型需要多少内存，单位为字节。这个运算符也可用于类，在这种情<br>况下，它将指出类声明中所有数据属性占用的总内存量，单位为字节。</p>
-<pre><code class="**应用如下**">
-#include &lt;iostream&gt; 
-#include &lt;string.h&gt; 
-using namespace std; 
-class MyString 
-{ 
-private: 
-char* buffer; 
-
-public: 
-MyString(const char* initString) // default constructor 
-{ 
-buffer = NULL; 
-if(initString != NULL) 
-{ 
-buffer = new char [strlen(initString) + 1]; 
-strcpy(buffer, initString); 
-} 
-} 
-
-MyString(const MyString&amp; copySource) // copy constructor 
-{ 
-buffer = NULL; 
-if(copySource.buffer != NULL) 
-{ 
-buffer = new char [strlen(copySource.buffer) + 1]; 
-strcpy(buffer, copySource.buffer); 
-} 
-} 
-
-~MyString() 
-{ 
-delete [] buffer; 
-} 
-
-int GetLength() 
-{ return strlen(buffer); } 
-
-const char* GetString() 
-{ return buffer; } 
-}; 
-
-class Human 
-{ 
-private: 
-int age; 
-bool gender; 
-MyString name; 
-
-public: 
-Human(const MyString&amp; InputName, int InputAge, bool gender) 
-: name(InputName), age (InputAge), gender(gender) {} 
-
-int GetAge () 
-{ return age; } 
-}; 
-
-int main() 
-{ 
-MyString mansName(&quot;Adam&quot;); 
-MyString womansName(&quot;Eve&quot;); 
-
-cout &lt;&lt; &quot;sizeof(MyString) = &quot; &lt;&lt; sizeof(MyString) &lt;&lt; endl; 
-cout &lt;&lt; &quot;sizeof(mansName) = &quot; &lt;&lt; sizeof(mansName) &lt;&lt; endl; 
-cout &lt;&lt; &quot;sizeof(womansName) = &quot; &lt;&lt; sizeof(womansName) &lt;&lt; endl; 
-
-Human firstMan(mansName, 25, true); 
-Human firstWoman(womansName, 18, false); 
-
-cout &lt;&lt; &quot;sizeof(Human) = &quot; &lt;&lt; sizeof(Human) &lt;&lt; endl; 
-cout &lt;&lt; &quot;sizeof(firstMan) = &quot; &lt;&lt; sizeof(firstMan) &lt;&lt; endl; 
-cout &lt;&lt; &quot;sizeof(firstWoman) = &quot; &lt;&lt; sizeof(firstWoman) &lt;&lt; endl; 
-
-return 0; 
-} 
-
-输出;
-sizeof(MyString) = 4 
-sizeof(mansName) = 4 
-sizeof(womansName) = 4 
-sizeof(Human) = 12 
-sizeof(firstMan) = 12 
-sizeof(firstWoman) = 12 
-</code></pre>
-<h2 id="结构不同于类的地方"><a href="#结构不同于类的地方" class="headerlink" title="结构不同于类的地方"></a>结构不同于类的地方</h2><p>关键字 struct 来自 C 语言，在 C++编译器看来，它与类及其相似，差别在于程序员未指定时，默<br>认的访问限定符（public 和 private）不同。因此，除非指定了，否则结构中的成员默认为公有的（而<br>类成员默认为私有的）；另外，除非指定了，否则结构以公有方式继承基结构（而类为私有继承）。<br>结构可以不注明公有的部分。</p>
-<h2 id="声明友元"><a href="#声明友元" class="headerlink" title="声明友元"></a>声明友元</h2><p>不能从外部访问类的私有数据成员和方法，但这条规则不适用于友元类和友元函数。要声明友元<br>类或友元函数，可使用关键字 friend，</p>
-<pre><code class="使用关键字friend让外部函数DisplayAge能够访问私有数据成员">
- #include &lt;iostream&gt; 
- #include &lt;string&gt; 
- using namespace std; 
- class Human 
- { 
- private: 
-      friend void DisplayAge(const Human&amp; person); //函数 DisplayAge( )是全局函数，还是 Human 类的友元，因此能够访问Human 类的私有数据成员。
-    string name; 
- int age; 
-
- public: 
- Human(string humansName, int humansAge) 
-  { 
-   name = humansName; 
-   age = humansAge; 
-  } 
-  }; 
-
- void DisplayAge(const Human&amp; person) 
-{ 
- cout &lt;&lt; person.age &lt;&lt; endl; 
- } 
-
- int main() 
- { 
- Human firstMan(&quot;Adam&quot;, 25); 
- cout &lt;&lt; &quot;Accessing private member age via friend function: &quot;; 
- DisplayAge(firstMan); 
- return 0; 
- } 
-
-输出
-Accessing private member age via friend function: 25 
-</code></pre>
-<pre><code>使用关键字  friend  让  外部类 Utility   能够访问  私有数据成员
- #include &lt;iostream&gt; 
- #include &lt;string&gt; 
- using namespace std; 
-
- class Human 
- { 
-  private: 
-    friend class Utility;  //指出 Utility 类是 Human 类的友元，该声明让 Utility 类的所有方法都能访问 Human 类的私有数据成员和方法。
-   string name; 
- int age; 
-
- public: 
- Human(string humansName, int humansAge) 
- { 
-  name = humansName; 
-  age = humansAge; 
- } 
- }; 
-
- class Utility 
- { 
- public: 
- static void DisplayAge(const Human&amp; person) 
- { 
- cout &lt;&lt; person.age &lt;&lt; endl; 
- } 
- };  
- int main() 
- { 
- Human firstMan(&quot;Adam&quot;, 25); 
- cout &lt;&lt; &quot;Accessing private member age via friend class: &quot;; 
- Utility::DisplayAge(firstMan); 
- return 0; 
- } 
-输出：
-Accessing private member age via friend class: 25
-</code></pre><h2 id="共用体"><a href="#共用体" class="headerlink" title="共用体"></a>共用体</h2><p>共用体是一种特殊的类，每次只有一个非静态数据成员处于活动状态。因此，共用体与类一样，<br>可包含多个数据成员，但不同的是只能使用其中的一个。<br>要声明共用体，可使用关键字 union ，如下所示<br>union UnionName<br>{<br> Type1 member1;<br> Type2 member2;<br>…<br> TypeN memberN;<br>};<br>要实例化并使用共用体，可像下面这样做：<br>UnionName unionObject;<br>unionObject.member2 = value;<br>猪猪猪猪猪：与结构类似，共用体的成员默认也是公有的，将 sizeof()用于共用体时，结果总是为共用体最大成员的长度，即便该成员并不处于活动状态。</p>
-<h2 id="聚合初始化"><a href="#聚合初始化" class="headerlink" title="聚合初始化"></a>聚合初始化</h2><p>下面的结构符合成为聚合类型的条件：<br>struct Aggregate1<br>{<br> int num;<br> double pi;<br>};<br>可将其作为一个整体进行初始化：<br>Aggregate1 a1{ 2017, 3.14 };<br>再来看一个例子：<br>struct Aggregate2<br>{<br> int num;<br> char hello[6];<br> int impYears[5];<br>};<br>对于这个结构，可像下面这样进行初始化：<br>Aggregate2 a2 {42, {‘h’, ‘e’, ‘l’, ‘l’, ‘o’}, {1998, 2003, 2011, 2014, 2017}}; </p>
+          <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><hr>
+<p><strong>定义变量  变量的类型 变量名=初始值</strong><br>变量名可以是 数字和字母，但不能以数字打头，不能包含空格和算数运算符，不能包含关键字。也可以用下划线。<br>局部变量： 只能从声明他的语句开始，到当前函数的末尾使用。<br>全局变量： 在函数外部定义的变量<br><strong>命名约定</strong><br>Pscal拼写法： 一般用于函数名，即每个单词首字母大写。<br>骆驼拼写法：一般用于变量，即每个单词首字母小写。<br><strong>变量类型表</strong></p>
+<p><img src="https://s2.ax1x.com/2020/02/29/3slxXt.png" alt="image.png"></p>
 <hr>
-<p> 文章依据21天学通C++第八版，纯属小白自学！！！！</p>
+<p><strong>使用bool存储布尔值，eg：bool value= false；<br>使用char变量存储字符串，eg: char value = ‘Y’<br>有符号整形 short、int、long、longlong<br>无符号整形unsigned。。。。<br>浮点类型float和double</strong></p>
+<hr>
+<p>故，如果预期变量的值不会为负数，将其类型声明为无符号。</p>
+<p><strong>使用sizeof确定变量的长度</strong><br>变量的长度是指程序员声明变量时，编译器将预留多少内存，用于存储付给该变量的数据。<br>使用： cout&lt;&lt; “size of bool: “&lt;&lt; sizeof(bool) &lt;&lt; endl;</p>
+<hr>
+<h3 id="使用auto可以自动推断类型，代码如下："><a href="#使用auto可以自动推断类型，代码如下：" class="headerlink" title="使用auto可以自动推断类型，代码如下："></a>使用auto可以自动推断类型，代码如下：</h3><pre><code class="javascript">#include &lt;iostream&gt;
+using namespace std;
+int main()
+ {
+auto coinFlippedHeads = true;
+auto largeNumber = 2500000000000;
+cout &lt;&lt; &quot;coinFlippedHeads = &quot; &lt;&lt; coinFlippedHeads;
+cout &lt;&lt; &quot; , sizeof(coinFlippedHeads) = &quot; &lt;&lt; sizeof(coinFlippedHeads) &lt;&lt;
+endl;
+cout &lt;&lt; &quot;largeNumber = &quot; &lt;&lt; largeNumber;
+cout &lt;&lt; &quot; , sizeof(largeNumber) = &quot; &lt;&lt; sizeof(largeNumber) &lt;&lt; endl;
+return 0;
+ }
+</code></pre>
+<p>注：使用auto时必须对变量进行初始化，根据变量的初始值推断变量的类型。</p>
+<h3 id="使用typedef可以替换变量类型-eg：-typedef-unsigned-int-uint"><a href="#使用typedef可以替换变量类型-eg：-typedef-unsigned-int-uint" class="headerlink" title="使用typedef可以替换变量类型 eg： typedef unsigned int uint"></a>使用typedef可以替换变量类型 eg： typedef unsigned int uint</h3><hr>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>C++中，常量包括：<br>字面常量：可以是任何类型<br>使用关键字const声明常量：eg：const double pi = 22.0/ 7 ；<br>使用constexpr声明的常量表达式：<br>constexpr double Getpi（）<br>{<br>return 22.0/7；<br>}<br>使用enum声明的枚举常量：<br>使用枚举量指示方位</p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+ enum CardinalDirections
+ {
+ North = 25,
+ South,
+ East,
+ West
+ };
+int main()
+{
+cout &lt;&lt; &quot;Displaying directions and their symbolic values&quot; &lt;&lt; endl;34
+cout &lt;&lt; &quot;North: &quot; &lt;&lt; North &lt;&lt; endl;
+cout &lt;&lt; &quot;South: &quot; &lt;&lt; South &lt;&lt; endl;
+cout &lt;&lt; &quot;East: &quot; &lt;&lt; East &lt;&lt; endl;
+cout &lt;&lt; &quot;West: &quot; &lt;&lt; West &lt;&lt; endl;
+CardinalDirections windDirection = South;
+cout &lt;&lt; &quot;Variable windDirection = &quot; &lt;&lt; windDirection &lt;&lt; endl
+return 0;
+}
+</code></pre><p>输出:<br>Displaying directions and their symbolic values<br>North: 25<br>South: 26<br>East: 27<br>West: 28<br>Variable windDirection = 26</p>
+<hr>
+<p>使用#define定义的常量（不推荐）。</p>
+<h2 id="不能用作常量或变量的关键字"><a href="#不能用作常量或变量的关键字" class="headerlink" title="不能用作常量或变量的关键字"></a>不能用作常量或变量的关键字</h2><p><img src="https://s2.ax1x.com/2020/02/29/3s104e.png" alt="image.png"></p>
+<p><img src="https://s2.ax1x.com/2020/02/29/3s1ogs.png" alt="image.png"></p>
+<hr>
+<p>文章依据21天学通C++第八版，纯属小白自学！！！！</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
         </div>
         <!-- .entry-content -->
@@ -885,15 +494,15 @@ Accessing private member age via friend class: 25
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/02/29/c++学习之继承/" rel="prev">
+            <a href="/page/A00012.html" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3sTF5q.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3sTF5q.png">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                C++学习--继承</h3>
+                分布式系统</h3>
                 <hr>
               </div>
             </a>
@@ -903,15 +512,15 @@ Accessing private member age via friend class: 25
           
             <div class="post-nepre half next">
           
-            <a href="/2020/02/29/python-opencv/" rel="next">
+            <a href="/page/A00004.html" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                Python-opencv-应用</h3>
+                C++学习--指针数组与字符串</h3>
                 <hr>
               </div>
             </a>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">分布式系统 | Mr.LZQ</title>
+  <title itemprop="name">Python入门 | Mr.LZQ</title>
   
     <link rel="shortcut icon" href="/images/lolo.ico">
   
@@ -379,11 +379,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s2.ax1x.com/2020/02/29/3sTF5q.png);" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3sTF5q.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s2.ax1x.com/2020/02/29/3sWsun.png);" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3sWsun.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      分布式系统</h1>
+      Python入门</h1>
       <p class="entry-census">
         <span>
           <a href="lzqmove.cn">
@@ -409,19 +409,21 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="怎么理解分布式系统"><a href="#怎么理解分布式系统" class="headerlink" title="怎么理解分布式系统"></a>怎么理解分布式系统</h1><p>[参考链接]（<a href="https://baike.baidu.com/）" target="_blank" rel="noopener">https://baike.baidu.com/）</a></p>
-<p>官方中讲，分布式系统（distributed system）是建立在网络之上的软件系统。正是因为软件的特性，所以分布式系统具有高度的内聚性和透明性。因此，网络和分布式系统之间的区别更多的在于高层软件（特别是操作系统），而不是硬件。</p>
-<p>看完这句话，基本上甚麽都没明白。</p>
-<pre><code>分布式系统：多个能独立运行的计算机（称为结点）组成。各个结点利用计算机网络进行信息传递，从而实现共同的“目标或者任务”。
-
-分布式程序： 运行在分布式系统上的计算机程序。
-
-分布式计算：利用分布式系统解决来计算问题。在分布式计算里，一个问题被细化成多个任务，每个任务可以被一个或者多个计算机来完成。
-
-区分分布式计算和并行计算：共同点都是大任务划分为小任务。不同点： 分布式计算：基于多台PC，每台PC完成同一任务中的不同部分。分布式的计算被分解后的小任务互相之间有独立性，节点之间的结果几乎不互相影响，实时性要求不高。并行计算：基于同一个台PC，利用CPU的多核共同完成一个任务。
-``` 
-</code></pre><h1 id="ros中为甚麽使用分布式系统"><a href="#ros中为甚麽使用分布式系统" class="headerlink" title="ros中为甚麽使用分布式系统"></a>ros中为甚麽使用分布式系统</h1><p>ROS的首要设计目标是在机器人研发领域提高代码复用率。ROS是一种分布式处理框架（又名Nodes）。这使可执行文件能被单独设计，并且在运行时松散耦合。这些过程可以封装到数据包（Packages）和堆栈（Stacks）中，以便于共享和分发。</p>
-<h2 id="简而言之，提高效率。。。"><a href="#简而言之，提高效率。。。" class="headerlink" title="简而言之，提高效率。。。"></a>简而言之，提高效率。。。</h2><p>####表示对分布式系统，大脑还是感觉空白。</p>
+          <h2 id="一、下载对应版本的ANACONDA"><a href="#一、下载对应版本的ANACONDA" class="headerlink" title="一、下载对应版本的ANACONDA"></a>一、下载对应版本的ANACONDA</h2><h2 id="二、更换anaconda镜像源"><a href="#二、更换anaconda镜像源" class="headerlink" title="二、更换anaconda镜像源"></a>二、更换anaconda镜像源</h2><p>点击anaconda的environment，注意此后的所有操作都是在environment中进行。<br>creat一个的环境，例如命名为“anaconda_python27”。<br>然后更换anaconda中的镜像源，因为原来的镜像源好像不太好用。<br>点击右侧栏中Channel，Add，添加如下两个源（不知道哪个是好用的）：</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</a><br><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</a></p>
+<p>其他镜像源：</p>
+<p>清华大学 <a href="https://pypi.tuna.tsinghua.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/</a></p>
+<p>阿里云 <a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/</a></p>
+<p>中国科技大学 <a href="https://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.mirrors.ustc.edu.cn/simple/</a></p>
+<p>豆瓣(douban) <a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a></p>
+<p>中国科学技术大学 <a href="http://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">http://pypi.mirrors.ustc.edu.cn/simple/</a></p>
+<h2 id="三、添加opencv和numpy"><a href="#三、添加opencv和numpy" class="headerlink" title="三、添加opencv和numpy"></a>三、添加opencv和numpy</h2><p>继续上续操作，将Installed改为All，<br>在搜索栏中搜索opencv，选中后Apply，这样就安装好了opencv，<br>nump安装同理。</p>
+<h2 id="四、新建工程、测试"><a href="#四、新建工程、测试" class="headerlink" title="四、新建工程、测试"></a>四、新建工程、测试</h2><p>打开pycharm，<br>file-new project</p>
+<p>import cv2</p>
+<p>print(cv2.<strong>version</strong>)</p>
+<p>输出：3.4.1</p>
+<hr>
+<p>文章参考德强师兄博客<a href="https://purethought.cn/" target="_blank" rel="noopener">https://purethought.cn/</a></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
         </div>
         <!-- .entry-content -->
@@ -453,15 +455,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/02/29/c++学习之变量与常量/" rel="prev">
+            <a href="/page/A00009.html" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                C++学习--变量</h3>
+                Python-opencv-视觉巡线</h3>
                 <hr>
               </div>
             </a>
@@ -471,15 +473,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/02/29/c++学习之继承/" rel="next">
+            <a href="/page/A00010.html" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                C++学习--继承</h3>
+                Python-opencv-应用</h3>
                 <hr>
               </div>
             </a>

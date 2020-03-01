@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">C++学习--继承 | Mr.LZQ</title>
+  <title itemprop="name">C++学习--类与对象 | Mr.LZQ</title>
   
     <link rel="shortcut icon" href="/images/lolo.ico">
   
@@ -383,7 +383,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      C++学习--继承</h1>
+      C++学习--类与对象</h1>
       <p class="entry-census">
         <span>
           <a href="lzqmove.cn">
@@ -409,447 +409,451 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="C-派生语法"><a href="#C-派生语法" class="headerlink" title="C++派生语法"></a>C++派生语法</h2><p>class Base<br>{<br> // … base class members<br>};<br>class Derived: access-specifier Base<br>{<br> // … derived class members<br>};<br>其中 access-specifier 可以是 public（这是最常见的，表示派生类是一个基类）、private 或 protected</p>
-<pre><code class="下面是一个简单的历程用来加深对继承的理解">鱼类世界呈现的一种简单的继承层次结构
-
- #include &lt;iostream&gt; 
+          <p><strong>前言</strong><br>[重要连接，不懂请看]（<a href="https://blog.csdn.net/u013921430/article/details/79677249）" target="_blank" rel="noopener">https://blog.csdn.net/u013921430/article/details/79677249）</a><br>起初一看，这个概念貌似在c语言中并没有存在过，应该是属于c++的核心之一了吧，下面开始仔细学习。<br>首先，提出以下问题以供思考：</p>
+<p>• 什么是类和对象；<br>• 类如何帮助您整合数据和处理数据的函数；<br>• 构造函数、复制构造函数和析构函数；<br>• 移动构造函数是什么；<br>• 封装和抽象等面向对象的概念；<br>• this 指针；<br>• 结构是什么，它与类有何不同。</p>
+<h2 id="什么是类"><a href="#什么是类" class="headerlink" title="什么是类"></a>什么是类</h2><p>要在程序中模拟人，需要一个结构，如图所示，将定义人的属性（数据）以及人可使用这些属性执行的操作（函数）整合在一起。这种结构就是类。<br><img src="https://s2.ax1x.com/2020/02/29/3sy2NQ.png" alt="image.png"></p>
+<h2 id="声明类"><a href="#声明类" class="headerlink" title="声明类"></a>声明类</h2><p>要声明类，可使用关键字 class，并在它后面依次包含类名，一组放在{}内的成员属性和成员函数，<br>以及结尾的分号。</p>
+<p>模拟人类的类类似于下面这样:<br><strong>class Human<br>{<br> // Member attributes:<br> string name;<br> string dateOfBirth;<br> string placeOfBirth;<br> string gender;<br> // Member functions:<br> void Talk(string textToTalk);<br> void IntroduceSelf();<br> …<br>}; </strong></p>
+<p>封装指的是将数据以及使用它们的函数进行逻辑编组，这是面向对象编程的重要特征。<br>创建 Human 对象与创建其他类型（如 double）的实例类似：</p>
+<p>double pi= 3.1415;<br>Human firstMan;</p>
+<p>就像可以为其他类型（如 int）动态分配内存一样，也可使用 new 为 Human 对象动态地分配内存：</p>
+<p>int* pointsToNum = new int;<br>delete pointsToNum; </p>
+<p>Human* firstWoman = new Human();<br>delete firstWoman; </p>
+<h2 id="使用句点运算符访问成员"><a href="#使用句点运算符访问成员" class="headerlink" title="使用句点运算符访问成员"></a>使用句点运算符访问成员</h2><p>一个人的例子是 Adam，男性，1970 年出生于阿拉巴马州。firstMan 是 Human 类的对象，是这个<br>类存在于现实世界（运行阶段）的化身：</p>
+<p>Human firstMan;<br>firstMan.dateOfBirth = “1970”;    //    类声明表明，firstMan 有 dateOfBirth 等属性，可使用句点运算符（.）<br>firstMan.IntroduceSelf();                    来访问</p>
+<p>如果有一个指针 firstWoman，它指向 Human 类的一个实例，则可使用指针运算符（-&gt;）来访问成<br>员，也可使用 间接运算符（<em>） 来获取对象，再使用 句点运算符 来访问成员：<br>Human</em> firstWoman = new Human();<br>(*firstWoman).IntroduceSelf(); </p>
+<h2 id="使用指针运算符（-gt-）访问成员"><a href="#使用指针运算符（-gt-）访问成员" class="headerlink" title="使用指针运算符（-&gt;）访问成员"></a>使用指针运算符（-&gt;）访问成员</h2><pre><code> #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
 using namespace std; 
-class Fish 
-{ 
-public: 
-bool isFreshWaterFish; 
-void Swim() 
-{ 
-if (isFreshWaterFish) 
-cout &lt;&lt; &quot;Swims in lake&quot; &lt;&lt; endl; 
-else 
-cout &lt;&lt; &quot;Swims in sea&quot; &lt;&lt; endl; 
-} 
-}; 
-
-class Tuna: public Fish 
-{ 
-public: 
-Tuna() 
-{ 
-isFreshWaterFish = false；
-} 
-}; 
-
-class Carp: public Fish 
-{ 
-public: 
-Carp() 
-{ 
-isFreshWaterFish = true; 
-} 
-}; 
-
-int main() 
-{ 
-Carp myLunch; 
-Tuna myDinner; 
-
-cout &lt;&lt; &quot;About my food:&quot; &lt;&lt; endl; 
-
-cout &lt;&lt; &quot;Lunch: &quot;; 
-myLunch.Swim(); 
-
-cout &lt;&lt; &quot;Dinner: &quot;; 
-myDinner.Swim(); 
-
-return 0; 
-} 
-输出：
-About my food: 
-Lunch: Swims in lake 
-Dinner: Swims in sea
-
-</code></pre>
-<h2 id="访问限定符-protected"><a href="#访问限定符-protected" class="headerlink" title="访问限定符 protected"></a>访问限定符 protected</h2><p> public 和 private 一样，protected 也是一个访问限定符。将属性声明为 protected 的时，<br>相当于允许派生类和友元类访问它，但禁止在继承层次结构外部（包括 main( )）访问它.</p>
-<pre><code>一种更好的 Fish 类设计，它使用关键字 protected 将成员属性只暴露给派生类
-#include &lt;iostream&gt; 
- using namespace std; 
-
-class Fish 
-   { 
-    protected: 
-       bool isFreshWaterFish;  
-    public: 
-         void Swim() 
-   { 
-      if (isFreshWaterFish) 
-     cout &lt;&lt; &quot;Swims in lake&quot; &lt;&lt; endl; 
-   else 
-      cout &lt;&lt; &quot;Swims in sea&quot; &lt;&lt; endl; 
- } 
-    }; 
-
- class Tuna: public Fish
-  { 
-public: 
-    Tuna() 
-      { 
- isFreshWaterFish = false; // set protected member in base 
-     }
-  }; 
-
-class Carp: public Fish 
+ class Human 
  { 
-public: 
-    Carp() 
-   { 
-  isFreshWaterFish = false; 
-   } 
+  public: 
+  string name; 
+  int age; 
+void IntroduceSelf() 
+ { 
+cout &lt;&lt; &quot;I am &quot; + name &lt;&lt; &quot; and am &quot;; 
+cout &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; 
+ } 
  }; 
 
 int main() 
-{
- Carp myLunch; 
- Tuna myDinner; 
- cout &lt;&lt; &quot;About my food&quot; &lt;&lt; endl;  
- cout &lt;&lt; &quot;Lunch: &quot;; 
- myLunch.Swim();  
- cout &lt;&lt; &quot;Dinner: &quot;; 
- myDinner.Swim(); 
- return 0; 
-    } 
-}
-
-输出：
-About my food 
-Lunch: Swims in lake 
-Dinner: Swims in sea 
-
-
-## 基类初始化—向基类传递参数
- 结构如下：
-class Base 
-{ 
-public: 
- Base(int someNumber) // overloaded constructor 
  { 
- // Use someNumber 
+Human firstMan; 
+firstMan.name = &quot;Adam&quot;; 
+firstMan.age = 30; 
+Human firstWoman; 
+firstWoman.name = &quot;Eve&quot;; 
+firstWoman.age = 28; 
+firstMan.IntroduceSelf(); 
+firstWoman.IntroduceSelf(); 
  } 
-}; 
-Class Derived: public Base 
+输出：I am Adam and am 30 years old 
+I am Eve and am 28 years old 
+</code></pre><h2 id="关键字-public-和-private"><a href="#关键字-public-和-private" class="headerlink" title="关键字 public 和 private"></a>关键字 public 和 private</h2><p>作为类的设计者，您可使用 C++关键字 public<br>和 private 来指定哪些部分可从外部（如 main( )）访问，哪些部分不能。</p>
+<pre><code class="程序实例">class Human 
 { 
-public: 
- Derived(): Base(25) // instantiate Base with argument 25 
- { 
- // derived class constructor code 
- } 
-}; 
-</code></pre><hr>
-<pre><code class="下面看一下具体例子">#include &lt;iostream&gt; 
-  using namespace std;  
- class Fish 
-     { 
-  protected: 
-           bool isFreshWaterFish; // accessible only to derived classes 
- public: 
-          Fish(bool isFreshWater) : isFreshWaterFish(isFreshWater)
-         {
-         } 
- void Swim() 
-     { 
-      if (isFreshWaterFish) 
-         cout &lt;&lt; &quot;Swims in lake&quot; &lt;&lt; endl; 
-   else 
-         cout &lt;&lt; &quot;Swims in sea&quot; &lt;&lt; endl; 
-    } 
-  }; 
-
-class Tuna: public Fish 
- { 
- public: 
-        Tuna(): Fish(false) 
-          {
-           }
- }; 
-
-class Carp: public Fish 
- { 
-public: 
-         Carp(): Fish(true)
-          {
-          } 
-  }; 
-
- int main() 
- { 
-       Carp myLunch; 
-       Tuna myDinner; 
- cout &lt;&lt; &quot;About my food&quot; &lt;&lt; endl; 
-cout &lt;&lt; &quot;Lunch: &quot;; 
- myLunch.Swim(); 
-cout &lt;&lt; &quot;Dinner: &quot;; 
-myDinner.Swim(); 
- return 0; 
-} 
-
-输出：
-About my food 
-Lunch: Swims in lake 
-Dinner: Swims in sea
-</code></pre>
-<h2 id="在派生类中覆盖基类的方法"><a href="#在派生类中覆盖基类的方法" class="headerlink" title="在派生类中覆盖基类的方法"></a>在派生类中覆盖基类的方法</h2><p>如果派生类实现了从基类继承的函数，且返回值和特征标相同，就相当于覆盖了基类的这个方法，<br>如下面的代码所示：</p>
-<pre><code>class Base 
-{ 
-public: 
-   void DoSomething() 
-   { 
-                       // implementation code… Does something 
-   } 
-}; 
-class Derived:public Base 
-  { 
- public: 
-         void DoSomething() 
-  { 
-                      // implementation code… Does something else 
-   } 
-}; 
-
-</code></pre><pre><code class="派生类Tuna和Carp覆盖了基类Fish的方法Swim"> #include &lt;iostream&gt; 
-using namespace std; 
-
-class Fish 
-        { 
 private: 
-        bool isFreshWaterFish; 
- public: 
-        Fish(bool isFreshWater) 
-         : isFreshWaterFish(isFreshWater)
-          {
-          } 
- void Swim() 
- { 
-if (isFreshWaterFish) 
- cout &lt;&lt; &quot;Swims in lake&quot; &lt;&lt; endl; 
-       else 
- cout &lt;&lt; &quot;Swims in sea&quot; &lt;&lt; endl; 
- } 
-          }; 
-
- class Tuna: public Fish 
- { 
+ // Private member data: 
+ int age; 
+ string name; 
 public: 
-       Tuna()
-         : Fish(false) 
-{
-} 
- void Swim() 
-{ 
- cout &lt;&lt; &quot;Tuna swims real fast&quot; &lt;&lt; endl; 
-   } 
-    }; 
+ int GetAge() 
+ { 
+ return age; 
+ } 
+ void SetAge(int humansAge) 
+ { 
+ age = humansAge; 
+ } 
+// ...Other members and declarations 
+}; 
 
- class Carp: public Fish 
+Human eve; 
+cout &lt;&lt; eve.age; // compile error 
+cout &lt;&lt; eve.GetAge(); // OK 
+</code></pre>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数是一种特殊的函数，它与类同名且不返回任何值。<br>声明如下：</p>
+<pre><code class="1">class Human 
 { 
+public: 
+ Human(); // declaration of a constructor 
+}; 
+</code></pre>
+<pre><code class="2">class Human 
+{ 
+public: 
+ Human() 
+ { 
+ // constructor code here 
+ } 
+}; 
+</code></pre>
+<pre><code class="3">class Human 
+{ 
+public: 
+ Human(); // constructor declaration 
+}; 
+// constructor implementation (definition) 
+Human::Human() 
+{ 
+ // constructor code here 
+} 
+</code></pre>
+<p><strong>补充：</strong>   ::被称为作用域解析运算符。例如，Human::dateOfBirth 指的是在 Human 类  中  声明的变量 dateOfBirth，而::dateOfBirth 表示全局作用域中的变量 dateOfBirth。</p>
+<pre><code class="使用构造函数初始化类成员变量">
+  #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
+using namespace std; 
+class Human 
+ { 
+private: 
+string name; 
+ int age; 
  public: 
-        Carp()
-              : Fish(true)
-              {
-              } 
- void Swim() 
+ Human() // constructor 
+ { 
+ age = 1; // initialization 
+cout &lt;&lt; &quot;Constructed an instance of class Human&quot; &lt;&lt; endl; 
+ } 
+void SetName (string humansName) 
+{ 
+ name = humansName; 
+ } 
+ void SetAge(int humansAge) 
+{ 
+ age = humansAge; 
+ } 
+ void IntroduceSelf() 
+ { 
+ cout &lt;&lt; &quot;I am &quot; + name &lt;&lt; &quot; and am &quot;; 
+cout &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; 
+ } 
+}; 
+int main() 
+{ 
+ Human firstWoman; 
+ firstWoman.SetName(&quot;Eve&quot;); 
+ firstWoman.SetAge (28); 
+ firstWoman.IntroduceSelf(); 
+} 
+输出：
+Constructed an instance of class Human 
+I am Eve and am 28 years old 
+</code></pre>
+<h2 id="重载构造函数"><a href="#重载构造函数" class="headerlink" title="重载构造函数"></a>重载构造函数</h2><pre><code class="例程">  #include &lt;iostream&gt; 
+  #include &lt;string&gt; 
+  using namespace std;  
+  class Human 
   { 
-      cout &lt;&lt; &quot;Carp swims real slow&quot; &lt;&lt; endl; 
+  private: 
+  string name; 
+  int age; 
+ public: 
+ Human()
+ { 
+ age = 0;
+ cout &lt;&lt; &quot;Default constructor: name and age not set&quot; &lt;&lt; endl; 
+ }  
+ Human(string humansName, int humansAge) 
+ { 
+ name = humansName; 
+ age = humansAge; 
+cout &lt;&lt; &quot;Overloaded constructor creates &quot;; 
+cout &lt;&lt; name &lt;&lt; &quot; of &quot; &lt;&lt; age &lt;&lt; &quot; years&quot; &lt;&lt; endl; 
+} 
+}; 
+int main() 
+{ 
+Human firstMan; 
+Human firstWoman (&quot;Eve&quot;, 20);  
+ } 
+输出：
+Default constructor: name and age not set 
+Overloaded constructor creates Eve of 20 years 
+</code></pre>
+<h2 id="包含初始化列表的构造函数"><a href="#包含初始化列表的构造函数" class="headerlink" title="包含初始化列表的构造函数"></a>包含初始化列表的构造函数</h2><pre><code class="程序清单9接受带默认值的参数的默认构造函数-并使用初始化列表来设置成员">
+ #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
+using namespace std; 
+ class Human 
+ { 
+private: 
+     int age; 
+      string name; 
+ public: 
+   Human(string humansName = &quot;Adam&quot;, int humansAge = 25) 
+              :name(humansName), age(humansAge) 
+  { 
+cout &lt;&lt; &quot;Constructed a human called &quot; &lt;&lt; name; 
+cout &lt;&lt; &quot;, &quot; &lt;&lt; age &lt;&lt; &quot; years old&quot; &lt;&lt; endl; 
+ } 
+}; 
+ int main() 
+ { 
+Human adam; 
+ Human eve(&quot;Eve&quot;, 18); 
+ return 0; 
+} 
+输出：
+Constructed a human called Adam, 25 years old 
+Constructed a human called Eve, 18 years old 
+</code></pre>
+<h2 id="析构函数-析构函数-析构函数"><a href="#析构函数-析构函数-析构函数" class="headerlink" title="析构函数 析构函数 析构函数"></a>析构函数 析构函数 析构函数</h2><p>与构造函数一样，析构函数也是一种特殊的函数。<strong>构造函数在实例化对象时被调用，而析构函数<br>在对象销毁时自动被调用。</strong><br>析构函数看起来像一个与类同名的函数，但前面有一个腭化符号（～）。因此，Human 类的析构函<br>数的声明类似于下面这样:</p>
+<pre><code class="1">class Human 
+{ 
+ ~Human(); // declaration of a destructor 
+}; 
+</code></pre>
+<pre><code class="2">class Human 
+{ 
+public: 
+ ~Human() 
+ { 
+ // destructor code here 
+ } 
+}; 
+</code></pre>
+<pre><code class="3">class Human 
+{ 
+public: 
+ ~Human(); 
+}; 
+
+Human::~Human() 
+{ 
+
+} 
+</code></pre>
+<p><strong>析构函数的功能</strong>：每当对象不再在作用域内或通过 delete 被删除进而被销毁时，都将调用析构函数。这使得析构函数成为重置变量以及释放动态分配的内存和其他资源的理想场所。</p>
+<pre><code class="一个简单的类它封装了字符缓冲区并通析构函数释放它">
+ #include &lt;iostream&gt; 
+ #include &lt;string.h&gt; 
+ using namespace std; 
+ class MyString 
+ { 
+ private: 
+    char* buffer; 
+ public: 
+    MyString(const char* initString) 
+   { 
+   if(initString != NULL) 
+   { 
+   buffer = new char [strlen(initString) + 1]; 
+   strcpy(buffer, initString); 
+    } 
+ else 
+   buffer = NULL; 
+    } 
+
+ ~MyString() 
+   { 
+  cout &lt;&lt; &quot;Invoking destructor, clearing up&quot; &lt;&lt; endl; 
+  if (buffer != NULL) 
+  delete [] buffer; 
+  } 
+
+ int GetLength() 
+   { 
+  return strlen(buffer); 
+   } 
+
+ const char* GetString() 
+   { 
+   return buffer; 
    } 
  }; 
 
 int main() 
- { 
-Carp myLunch; 
-Tuna myDinner; 
-cout &lt;&lt; &quot;About my food&quot; &lt;&lt; endl; 
-cout &lt;&lt; &quot;Lunch: &quot;; 
-myLunch.Swim(); 
-cout &lt;&lt; &quot;Dinner: &quot;; 
- myDinner.Swim(); 
-return 0; 
+   { 
+ MyString sayHello(&quot;Hello from String Class&quot;); 
+ cout &lt;&lt; &quot;String buffer in sayHello is &quot; &lt;&lt; sayHello.GetLength(); 
+ cout &lt;&lt; &quot; characters long&quot; &lt;&lt; endl; 
+ cout &lt;&lt; &quot;Buffer contains: &quot; &lt;&lt; sayHello.GetString() &lt;&lt; endl; 
  } 
 
 输出：
-About my food 
-Lunch: Carp swims real slow 
-Dinner: Tuna swims real fast 
-
-分析： myLunch.Swim( )调用的是 Carp::Swim( )。同样，myDinner.Swim( )调用的是Tuna::Swim( )。换句话说，基类 Fish 中 Swim( ）被派生类 Tuna 和 Carp 类中的 Swim( )覆盖了。要调用 Fish::Swim( )，只能在 main( )中使用作用域解析运算符显式地调用它。
-即：如果要在 main( )中调用 Fish::Swim( )，需要使用作用域解析运算符（::），如
-下所示：
-myDinner.Fish::Swim();
+String buffer in sayHello is 23 characters long 
+Buffer contains: Hello from String Class 
+Invoking destructor, clearing up 
 </code></pre>
-<h2 id="在派生类中调用基类的方法"><a href="#在派生类中调用基类的方法" class="headerlink" title="在派生类中调用基类的方法"></a>在派生类中调用基类的方法</h2><p>如果要在 Tuna::Swim( )<br>和 Carp::Swim( )的实现中重用 Fish::Swim( )的通用实现，可使用作用域解析运算符（::），如下面的代<br>码所示：</p>
-<pre><code>class Carp: public Fish 
+<h2 id="使用关键字explicit可以避免隐式转换"><a href="#使用关键字explicit可以避免隐式转换" class="headerlink" title="使用关键字explicit可以避免隐式转换"></a>使用关键字explicit可以避免隐式转换</h2><h2 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h2><p>在类中，关键字 this 包含当前对象的地址，换句话说，其值为&amp;object。<br>分析如下：</p>
+<pre><code>class Human 
 { 
+private: 
+  void Talk (string Statement) 
+  cout &lt;&lt; Statement; 
+ } 
 public: 
- Carp(): Fish(true) {} 
- void Swim() 
+ void IntroduceSelf() 
  { 
- cout &lt;&lt; &quot;Carp swims real slow&quot; &lt;&lt; endl; 
- Fish::Swim(); // invoke base class function using operator:: 
+ Talk(&quot;Bla bla&quot;); // same as Talk(this, &quot;Bla Bla&quot;) 
  } 
 }; 
-</code></pre><p><strong>具体应用</strong></p>
-<p>在基类方法和 main( )中，使用作用域解析运算符（::）来调用基类方法</p>
-<pre><code> #include &lt;iostream&gt; 
-using namespace std; 
- class Fish 
-{ 
- private: 
- bool isFreshWaterFish;  
-public: 
- Fish(bool isFreshWater) : isFreshWaterFish(isFreshWater){} 
-void Swim() 
-{ 
- if (isFreshWaterFish) 
- cout &lt;&lt; &quot;Swims in lake&quot; &lt;&lt; endl; 
- else 
-cout &lt;&lt; &quot;Swims in sea&quot; &lt;&lt; endl; 
- } 
- }; 
- class Tuna: public Fish 
- { 
- public: 
- Tuna(): Fish(false) {} 
- void Swim() 
- { 
- cout &lt;&lt; &quot;Tuna swims real fast&quot; &lt;&lt; endl; 
- } 
- }; 
- class Carp: public Fish 
- { 
- public: 
- Carp(): Fish(true) {} 
- void Swim() 
- { 
- cout &lt;&lt; &quot;Carp swims real slow&quot; &lt;&lt; endl; 
-Fish::Swim(); 
- } 
- }; 
- int main() 
- { 
-Carp myLunch; 
- Tuna myDinner; 
- cout &lt;&lt; &quot;About my food&quot; &lt;&lt; endl;  
- cout &lt;&lt; &quot;Lunch: &quot;; 
- myLunch.Swim(); 
- cout &lt;&lt; &quot;Dinner: &quot;; 
- myDinner.Fish::Swim(); 
- return 0; 
- } 
-输出：
-About my food 
-Lunch: Carp swims real slow 
-Swims in lake 
-Dinner: Swims in sea 
-</code></pre><h2 id="构造顺序"><a href="#构造顺序" class="headerlink" title="构造顺序"></a>构造顺序</h2><p><strong>基类对象在派生类对象之前被实例化</strong>。首先构造 Tuna 对象的Fish 部分，这样实例化 Tuna 部分时，成员属性（具体地说是 Fish 的保护和公有属性）已准备就绪，可以使用了。实例化 Fish 部分和 Tuna 部分时，先实例化成员属性（如 Fish::isFreshWaterFish），再调用构造函数，确保成员属性准备就绪，可供构造函数使用。这也适用于 Tuna::Tuna( )。<br><strong>析构顺序与此相反</strong></p>
-<h2 id="私有继承"><a href="#私有继承" class="headerlink" title="私有继承"></a>私有继承</h2><p>格式如下：<br>class Base<br>{<br> // … base class members and methods<br>};<br>class Derived: private Base // private inheritance<br>{<br> // … derived class members and methods<br>}; </p>
-<p>私有继承意味着在派生类的实例中，基类的所有公有成员和方法都是私有的—不能从外部访问。<br>换句话说，即便是 Base 类的公有成员和方法，也只能被 Derived 类使用，而无法通过 Derived 实例来<br>使用它们。<br>在公有继承中，，可在 main( )中通过 Tuna 实例调用 Fish::Swim( )，因为 Fish::Swim( )是个公有方法，且 Tuna 类是以公有方式从 Fish 类派生而来的。而在私有继承中无法实现。私有继承使得只有子类才能使用基类的属性和方法，因此也被称为 has-a 关系。<br>比如由发动机派生汽车，由小到大的派生。</p>
-<pre><code class="实例">Car 类以私有方式继承 Motor 类
- 0: #include &lt;iostream&gt; 
- using namespace std; 
- class Motor 
- { 
- public: 
- void SwitchIgnition() 
-   { 
- cout &lt;&lt; &quot;Ignition ON&quot; &lt;&lt; endl; 
-  } 
- void PumpFuel() 
-   { 
- cout &lt;&lt; &quot;Fuel in cylinders&quot; &lt;&lt; endl; 
-   } 
- void FireCylinders() 
- { 
- cout &lt;&lt; &quot;Vroooom&quot; &lt;&lt; endl; 
- } 
-           };  
-
-class Car:private Motor // private inheritance 
- { 
- public: 
- void Move() 
-{ 
-   SwitchIgnition(); 
-   PumpFuel(); 
-   FireCylinders(); 
-    } 
-           }; 
-
- int main() 
- { 
-    Car myDreamCar; 
-    myDreamCar.Move(); 
- return 0; 
- } 
-
-输出：
-Ignition ON 
-Fuel in cylinders 
-Vroooom 
-</code></pre>
-<h2 id="保护继承"><a href="#保护继承" class="headerlink" title="保护继承"></a>保护继承</h2><p>结构如下：<br>class Base<br>{<br>              // … base class members and methods<br>};<br>class Derived: protected Base                              // protected inheritance<br>{<br>            // … derived class members and methods<br>};<br>特征：<br>• 它也表示 has-a 关系；<br>• 它也让派生类能够访问基类的所有公有和保护成员；<br>• 在继承层次结构外面，也不能通过派生类实例访问基类的公有成员。<br>随着继承层次结构的加深，保护继承将与私有继承有些不同：<br>class Derived2: protected Derived<br>{<br>  // can access public &amp; protected members of Base<br>}<br>在保护继承层次结构中，子类的子类（即 Derived2）能够访问 Base 类的公有和保护成员</p>
-<p>实例理解</p>
-<pre><code> RaceCar 类以保护方式继承了 Car 类，而 Car 类以保护方式继承了 Motor 类
+</code></pre><p>在这里，方法 IntroduceSelf( )使用私有成员 Talk( )在屏幕上显示一句话。实际上，编译器将在调用<br>Talk 时嵌入 this 指针，即 Talk(this, “Blab la”)</p>
+<h2 id="将-sizeof-用于类"><a href="#将-sizeof-用于类" class="headerlink" title="将 sizeof( )用于类"></a>将 sizeof( )用于类</h2><p>运算符 sizeof( )用于确定指定类型需要多少内存，单位为字节。这个运算符也可用于类，在这种情<br>况下，它将指出类声明中所有数据属性占用的总内存量，单位为字节。</p>
+<pre><code class="**应用如下**">
 #include &lt;iostream&gt; 
+#include &lt;string.h&gt; 
+using namespace std; 
+class MyString 
+{ 
+private: 
+char* buffer; 
+
+public: 
+MyString(const char* initString) // default constructor 
+{ 
+buffer = NULL; 
+if(initString != NULL) 
+{ 
+buffer = new char [strlen(initString) + 1]; 
+strcpy(buffer, initString); 
+} 
+} 
+
+MyString(const MyString&amp; copySource) // copy constructor 
+{ 
+buffer = NULL; 
+if(copySource.buffer != NULL) 
+{ 
+buffer = new char [strlen(copySource.buffer) + 1]; 
+strcpy(buffer, copySource.buffer); 
+} 
+} 
+
+~MyString() 
+{ 
+delete [] buffer; 
+} 
+
+int GetLength() 
+{ return strlen(buffer); } 
+
+const char* GetString() 
+{ return buffer; } 
+}; 
+
+class Human 
+{ 
+private: 
+int age; 
+bool gender; 
+MyString name; 
+
+public: 
+Human(const MyString&amp; InputName, int InputAge, bool gender) 
+: name(InputName), age (InputAge), gender(gender) {} 
+
+int GetAge () 
+{ return age; } 
+}; 
+
+int main() 
+{ 
+MyString mansName(&quot;Adam&quot;); 
+MyString womansName(&quot;Eve&quot;); 
+
+cout &lt;&lt; &quot;sizeof(MyString) = &quot; &lt;&lt; sizeof(MyString) &lt;&lt; endl; 
+cout &lt;&lt; &quot;sizeof(mansName) = &quot; &lt;&lt; sizeof(mansName) &lt;&lt; endl; 
+cout &lt;&lt; &quot;sizeof(womansName) = &quot; &lt;&lt; sizeof(womansName) &lt;&lt; endl; 
+
+Human firstMan(mansName, 25, true); 
+Human firstWoman(womansName, 18, false); 
+
+cout &lt;&lt; &quot;sizeof(Human) = &quot; &lt;&lt; sizeof(Human) &lt;&lt; endl; 
+cout &lt;&lt; &quot;sizeof(firstMan) = &quot; &lt;&lt; sizeof(firstMan) &lt;&lt; endl; 
+cout &lt;&lt; &quot;sizeof(firstWoman) = &quot; &lt;&lt; sizeof(firstWoman) &lt;&lt; endl; 
+
+return 0; 
+} 
+
+输出;
+sizeof(MyString) = 4 
+sizeof(mansName) = 4 
+sizeof(womansName) = 4 
+sizeof(Human) = 12 
+sizeof(firstMan) = 12 
+sizeof(firstWoman) = 12 
+</code></pre>
+<h2 id="结构不同于类的地方"><a href="#结构不同于类的地方" class="headerlink" title="结构不同于类的地方"></a>结构不同于类的地方</h2><p>关键字 struct 来自 C 语言，在 C++编译器看来，它与类及其相似，差别在于程序员未指定时，默<br>认的访问限定符（public 和 private）不同。因此，除非指定了，否则结构中的成员默认为公有的（而<br>类成员默认为私有的）；另外，除非指定了，否则结构以公有方式继承基结构（而类为私有继承）。<br>结构可以不注明公有的部分。</p>
+<h2 id="声明友元"><a href="#声明友元" class="headerlink" title="声明友元"></a>声明友元</h2><p>不能从外部访问类的私有数据成员和方法，但这条规则不适用于友元类和友元函数。要声明友元<br>类或友元函数，可使用关键字 friend，</p>
+<pre><code class="使用关键字friend让外部函数DisplayAge能够访问私有数据成员">
+ #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
  using namespace std; 
- class Motor 
+ class Human 
  { 
+ private: 
+      friend void DisplayAge(const Human&amp; person); //函数 DisplayAge( )是全局函数，还是 Human 类的友元，因此能够访问Human 类的私有数据成员。
+    string name; 
+ int age; 
+
  public: 
- void SwitchIgnition() 
- { 
- cout &lt;&lt; &quot;Ignition ON&quot; &lt;&lt; endl; 
+ Human(string humansName, int humansAge) 
+  { 
+   name = humansName; 
+   age = humansAge; 
+  } 
+  }; 
+
+ void DisplayAge(const Human&amp; person) 
+{ 
+ cout &lt;&lt; person.age &lt;&lt; endl; 
  } 
-void PumpFuel() 
+
+ int main() 
  { 
- cout &lt;&lt; &quot;Fuel in cylinders&quot; &lt;&lt; endl; 
+ Human firstMan(&quot;Adam&quot;, 25); 
+ cout &lt;&lt; &quot;Accessing private member age via friend function: &quot;; 
+ DisplayAge(firstMan); 
+ return 0; 
  } 
-void FireCylinders() 
+
+输出
+Accessing private member age via friend function: 25 
+</code></pre>
+<pre><code>使用关键字  friend  让  外部类 Utility   能够访问  私有数据成员
+ #include &lt;iostream&gt; 
+ #include &lt;string&gt; 
+ using namespace std; 
+
+ class Human 
  { 
-cout &lt;&lt; &quot;Vroooom&quot; &lt;&lt; endl; 
+  private: 
+    friend class Utility;  //指出 Utility 类是 Human 类的友元，该声明让 Utility 类的所有方法都能访问 Human 类的私有数据成员和方法。
+   string name; 
+ int age; 
+
+ public: 
+ Human(string humansName, int humansAge) 
+ { 
+  name = humansName; 
+  age = humansAge; 
  } 
  }; 
- class Car:protected Motor 
-{ 
-public: 
- void Move() 
+
+ class Utility 
  { 
- SwitchIgnition(); 
-PumpFuel(); 
-FireCylinders(); 
+ public: 
+ static void DisplayAge(const Human&amp; person) 
+ { 
+ cout &lt;&lt; person.age &lt;&lt; endl; 
  } 
  };  
-class RaceCar:protected Car 
- { 
-public: 
- void Move() 
- { 
-SwitchIgnition(); 
- PumpFuel(); 
- FireCylinders();
- FireCylinders(); 
- FireCylinders(); 
- } 
- }; 
  int main() 
  { 
- RaceCar myDreamCar;
- myDreamCar.Move();  
-return 0; 
+ Human firstMan(&quot;Adam&quot;, 25); 
+ cout &lt;&lt; &quot;Accessing private member age via friend class: &quot;; 
+ Utility::DisplayAge(firstMan); 
+ return 0; 
  } 
-
 输出：
-Ignition ON 
-Fuel in cylinders 
-Vroooom 
-Vroooom 
-Vroooom 
-</code></pre><h2 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h2><p>class Derived: access-specifier Base1, access-specifier Base2<br>{<br>  // class members<br>}; </p>
-<h2 id="使用-final-禁止继承"><a href="#使用-final-禁止继承" class="headerlink" title="使用 final 禁止继承"></a>使用 final 禁止继承</h2><p>被声明为 final 的类不能用作基类。</p>
+Accessing private member age via friend class: 25
+</code></pre><h2 id="共用体"><a href="#共用体" class="headerlink" title="共用体"></a>共用体</h2><p>共用体是一种特殊的类，每次只有一个非静态数据成员处于活动状态。因此，共用体与类一样，<br>可包含多个数据成员，但不同的是只能使用其中的一个。<br>要声明共用体，可使用关键字 union ，如下所示<br>union UnionName<br>{<br> Type1 member1;<br> Type2 member2;<br>…<br> TypeN memberN;<br>};<br>要实例化并使用共用体，可像下面这样做：<br>UnionName unionObject;<br>unionObject.member2 = value;<br>猪猪猪猪猪：与结构类似，共用体的成员默认也是公有的，将 sizeof()用于共用体时，结果总是为共用体最大成员的长度，即便该成员并不处于活动状态。</p>
+<h2 id="聚合初始化"><a href="#聚合初始化" class="headerlink" title="聚合初始化"></a>聚合初始化</h2><p>下面的结构符合成为聚合类型的条件：<br>struct Aggregate1<br>{<br> int num;<br> double pi;<br>};<br>可将其作为一个整体进行初始化：<br>Aggregate1 a1{ 2017, 3.14 };<br>再来看一个例子：<br>struct Aggregate2<br>{<br> int num;<br> char hello[6];<br> int impYears[5];<br>};<br>对于这个结构，可像下面这样进行初始化：<br>Aggregate2 a2 {42, {‘h’, ‘e’, ‘l’, ‘l’, ‘o’}, {1998, 2003, 2011, 2014, 2017}}; </p>
 <hr>
-<p>文章依据21天学通C++第八版，纯属小白自学！！！！</p>
+<p> 文章依据21天学通C++第八版，纯属小白自学！！！！</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
         </div>
         <!-- .entry-content -->
@@ -881,15 +885,15 @@ Vroooom
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/02/29/分布式系统/" rel="prev">
+            <a href="/page/A00010.html" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3sTF5q.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3sTF5q.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3s2ZvR.png">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                分布式系统</h3>
+                Python-opencv-应用</h3>
                 <hr>
               </div>
             </a>
@@ -899,7 +903,7 @@ Vroooom
           
             <div class="post-nepre half next">
           
-            <a href="/2020/02/29/c++学习之类与对象/" rel="next">
+            <a href="/page/A00007.html" rel="next">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
               </div>
@@ -907,7 +911,7 @@ Vroooom
               Next Post</span>
               <div class="info">
                 <h3>
-                C++学习--类与对象</h3>
+                C++学习--继承</h3>
                 <hr>
               </div>
             </a>

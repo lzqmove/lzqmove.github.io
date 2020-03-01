@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">C++学习--变量 | Mr.LZQ</title>
+  <title itemprop="name">archive_a: 2020/2 | Mr.LZQ</title>
   
     <link rel="shortcut icon" href="/images/lolo.ico">
   
@@ -373,193 +373,224 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s2.ax1x.com/2020/02/29/3slnFe.png);" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      C++学习--变量</h1>
-      <p class="entry-census">
-        <span>
-          <a href="lzqmove.cn">
-            <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/custom/bg.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="lzqmove.cn">lzq</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2020-2-29<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
-  </div>
-
+      <div class="blank" style="padding-top: 75px;">
+</div>
 <div id="content" class="site-content">
-  <div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><hr>
-<p><strong>定义变量  变量的类型 变量名=初始值</strong><br>变量名可以是 数字和字母，但不能以数字打头，不能包含空格和算数运算符，不能包含关键字。也可以用下划线。<br>局部变量： 只能从声明他的语句开始，到当前函数的末尾使用。<br>全局变量： 在函数外部定义的变量<br><strong>命名约定</strong><br>Pscal拼写法： 一般用于函数名，即每个单词首字母大写。<br>骆驼拼写法：一般用于变量，即每个单词首字母小写。<br><strong>变量类型表</strong></p>
-<p><img src="https://s2.ax1x.com/2020/02/29/3slxXt.png" alt="image.png"></p>
-<hr>
-<p><strong>使用bool存储布尔值，eg：bool value= false；<br>使用char变量存储字符串，eg: char value = ‘Y’<br>有符号整形 short、int、long、longlong<br>无符号整形unsigned。。。。<br>浮点类型float和double</strong></p>
-<hr>
-<p>故，如果预期变量的值不会为负数，将其类型声明为无符号。</p>
-<p><strong>使用sizeof确定变量的长度</strong><br>变量的长度是指程序员声明变量时，编译器将预留多少内存，用于存储付给该变量的数据。<br>使用： cout&lt;&lt; “size of bool: “&lt;&lt; sizeof(bool) &lt;&lt; endl;</p>
-<hr>
-<h3 id="使用auto可以自动推断类型，代码如下："><a href="#使用auto可以自动推断类型，代码如下：" class="headerlink" title="使用auto可以自动推断类型，代码如下："></a>使用auto可以自动推断类型，代码如下：</h3><pre><code class="javascript">#include &lt;iostream&gt;
-using namespace std;
-int main()
- {
-auto coinFlippedHeads = true;
-auto largeNumber = 2500000000000;
-cout &lt;&lt; &quot;coinFlippedHeads = &quot; &lt;&lt; coinFlippedHeads;
-cout &lt;&lt; &quot; , sizeof(coinFlippedHeads) = &quot; &lt;&lt; sizeof(coinFlippedHeads) &lt;&lt;
-endl;
-cout &lt;&lt; &quot;largeNumber = &quot; &lt;&lt; largeNumber;
-cout &lt;&lt; &quot; , sizeof(largeNumber) = &quot; &lt;&lt; sizeof(largeNumber) &lt;&lt; endl;
-return 0;
- }
-</code></pre>
-<p>注：使用auto时必须对变量进行初始化，根据变量的初始值推断变量的类型。</p>
-<h3 id="使用typedef可以替换变量类型-eg：-typedef-unsigned-int-uint"><a href="#使用typedef可以替换变量类型-eg：-typedef-unsigned-int-uint" class="headerlink" title="使用typedef可以替换变量类型 eg： typedef unsigned int uint"></a>使用typedef可以替换变量类型 eg： typedef unsigned int uint</h3><hr>
-<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>C++中，常量包括：<br>字面常量：可以是任何类型<br>使用关键字const声明常量：eg：const double pi = 22.0/ 7 ；<br>使用constexpr声明的常量表达式：<br>constexpr double Getpi（）<br>{<br>return 22.0/7；<br>}<br>使用enum声明的枚举常量：<br>使用枚举量指示方位</p>
-<pre><code>#include &lt;iostream&gt;
-using namespace std;
-
- enum CardinalDirections
- {
- North = 25,
- South,
- East,
- West
- };
-int main()
-{
-cout &lt;&lt; &quot;Displaying directions and their symbolic values&quot; &lt;&lt; endl;34
-cout &lt;&lt; &quot;North: &quot; &lt;&lt; North &lt;&lt; endl;
-cout &lt;&lt; &quot;South: &quot; &lt;&lt; South &lt;&lt; endl;
-cout &lt;&lt; &quot;East: &quot; &lt;&lt; East &lt;&lt; endl;
-cout &lt;&lt; &quot;West: &quot; &lt;&lt; West &lt;&lt; endl;
-CardinalDirections windDirection = South;
-cout &lt;&lt; &quot;Variable windDirection = &quot; &lt;&lt; windDirection &lt;&lt; endl
-return 0;
-}
-</code></pre><p>输出:<br>Displaying directions and their symbolic values<br>North: 25<br>South: 26<br>East: 27<br>West: 28<br>Variable windDirection = 26</p>
-<hr>
-<p>使用#define定义的常量（不推荐）。</p>
-<h2 id="不能用作常量或变量的关键字"><a href="#不能用作常量或变量的关键字" class="headerlink" title="不能用作常量或变量的关键字"></a>不能用作常量或变量的关键字</h2><p><img src="https://s2.ax1x.com/2020/02/29/3s104e.png" alt="image.png"></p>
-<p><img src="https://s2.ax1x.com/2020/02/29/3s1ogs.png" alt="image.png"></p>
-<hr>
-<p>文章依据21天学通C++第八版，纯属小白自学！！！！</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/custom/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/custom/donate/WeChanQR.png"></li>
-              </ul>
+  <div id="main">
+    <header class="page-header">
+      <h1 class="cat-title">
+      时💞光💞轴</h1>
+      <span class="cat-des">
+        <p>
+        Archives</p>
+      </span>
+    </header>
+    <div id="main-part">
+      <article class="art">
+        <div class="art-main">
+          <div class="art-content">
+            <div id="archives">
+              <p style="text-align:right;">
+                [<span id="al_expand_collapse" style="cursor: s-resize;">
+                全部展开/收缩</span>
+              ]</p>
+              
+              
+              
+              
+              
+                
+                <h3 class="al_year">2020年</h3>
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      02月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/page/A00012.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          分布式系统
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00002.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          C++学习--变量
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00004.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          C++学习--指针数组与字符串
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00003.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          C++学习--指针引用
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00005.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          C++学习--程序控制流程
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00009.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          Python-opencv-视觉巡线
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00011.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          Python入门
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00010.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          Python-opencv-应用
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00006.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          C++学习--类与对象
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00007.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          C++学习--继承
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/page/A00001.html">
+                          <span style="color:#0bf;">
+                          29日11:02:01</span>
+                          Blog生成带ID的html文件
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
+              
+              
+              
+                
+                <h3 class="al_year">2018年</h3>
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      12月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/page/A00008.html">
+                          <span style="color:#0bf;">
+                          12日22:16:01</span>
+                          Hexo-Theme-Sakura
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
             </div>
           </div>
         </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
       </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/02/29/c++学习之程序流程控制/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                C++学习--程序控制流程</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2020/02/29/分布式系统/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3sTF5q.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3sTF5q.png">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                分布式系统</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
-      
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "wi1797eVGol8VJniNxxUuyBU-gzGzoHsz",
-        appKey: "O5SKk9Lur8NHwO02ueP3M2OS",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="lzqmove.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/custom/bg.jpg" itemprop="image" alt="lzq" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="lzqmove.cn" itemprop="url" rel="author">lzq</a>
-            </h3>
-          </div>
-        </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i>继续努力</p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+    </div>
+  </div>
 </div>
-
-
 
     </div>    
     <div class="ins-search">

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">C++学习--程序控制流程 | Mr.LZQ</title>
+  <title itemprop="name">Tag: 小技巧 | Mr.LZQ</title>
   
     <link rel="shortcut icon" href="/images/lolo.ico">
   
@@ -373,229 +373,64 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+      
 <div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s2.ax1x.com/2020/02/29/3slnFe.png);" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      C++学习--程序控制流程</h1>
-      <p class="entry-census">
-        <span>
-          <a href="lzqmove.cn">
-            <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/custom/bg.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="lzqmove.cn">lzq</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2020-2-29<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
+<div class="pattern-center ">
+  <div class="pattern-attachment-img">
+    <img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/22/3MVGQA.png" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
-
+  <header class="pattern-header ">
+    <h1 class="cat-title">小技巧</h1>
+  </header>
+</div>
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h1 id="控制程序流程"><a href="#控制程序流程" class="headerlink" title="控制程序流程"></a>控制程序流程</h1><p>① 使用if —–else有条件的执行<br>if…else 结构的 else 部分是可选的。如果在表达式为 false 时不执行任何操作，可以不使<br>用这部分。<br><strong>if实现嵌套</strong><br>DoSomething1;<br> if(expression2)<br> DoSomething2;<br> else<br> DoSomethingElse2;<br>}<br>else<br> DoSomethingElse1; </p>
-<p>② 使用switch—–case进行条件处理</p>
-<pre><code class="语法结构如下">switch(expression) 
-{ 
-case LabelA: 
- DoSomething; 
- break; 
-case LabelB: 
- DoSomethingElse; 
- break; 
-// And so on... 
-default: 
- DoStuffWhenExpressionIsNotHandledAbove; 
- break; 
-} 
-</code></pre>
-<h2 id="使用运算符-进行条件处理"><a href="#使用运算符-进行条件处理" class="headerlink" title="使用运算符?:进行条件处理"></a>使用运算符?:进行条件处理</h2><p>C++提供了一个有趣且功能强大的运算符—条件运算符，它相当于紧凑的 if-else 结构。<br>条件运算符也叫三目运算符，因为它使用三个操作数：<br>(conditional expression evaluated to bool) ? expression1 if true : expression2<br>if false;<br>可使用这个运算符获得两个数字中较大的那个：<br>int max = (num1 &gt; num2)? num1 : num2;</p>
-<pre><code class="实例找出两个数中最大的">0: #include &lt;iostream&gt; 
- 1: using namespace std; 
- 2: 
- 3: int main() 
- 4: { 
- 5: cout &lt;&lt; &quot;Enter two numbers&quot; &lt;&lt; endl; 
- 6: int num1 = 0, num2 = 0; 
- 7: cin &gt;&gt; num1; 
- 8: cin &gt;&gt; num2; 
- 9: 
-10: int max = (num1 &gt; num2)? num1 : num2; 
-11: cout &lt;&lt; &quot;The greater of &quot; &lt;&lt; num1 &lt;&lt; &quot; and &quot; \ 
-12: &lt;&lt; num2 &lt;&lt; &quot; is: &quot; &lt;&lt; max &lt;&lt; endl; 
-13: 
-14: return 0; 
-15: } 
-
-输出：
-Enter two numbers 
-365 
--1 
-The greater of 365 and -1 is: 36
-</code></pre>
-<h2 id="再循环中执行代码"><a href="#再循环中执行代码" class="headerlink" title="再循环中执行代码"></a>再循环中执行代码</h2><h2 id="①不成熟的-goto-循环"><a href="#①不成熟的-goto-循环" class="headerlink" title="①不成熟的 goto 循环"></a>①不成熟的 goto 循环</h2><p>顾名思义，goto 指示跳到代码的特定位置继续执行，您可使用它回过头去再次执行特定的语句。<br>goto 语句的语法如下：<br>SomeFunction()<br>{<br>Start: // Called a label<br> CodeThatRepeats;<br> goto Start;<br>} </p>
-<h2 id="②更加优雅的while循环"><a href="#②更加优雅的while循环" class="headerlink" title="②更加优雅的while循环"></a>②更加优雅的while循环</h2><p>while(expression)<br>{<br> // Expression evaluates to true<br> StatementBlock;<br>}<br>只要 expression 为 true，就将反复执行该语句块。因此，必须确保 expression 在特定条件下将为 false，<br>否则 while 循环将永不停止。</p>
-<h2 id="③它兄弟-Do-—–while循环"><a href="#③它兄弟-Do-—–while循环" class="headerlink" title="③它兄弟 Do —–while循环"></a>③它兄弟 Do —–while循环</h2><p>do…while 循环的语法如下：<br>do<br>{<br>  StatementBlock; // executed at least once<br>} while(condition); // ends loop if condition evaluates to false<br>注意到包含 while(expression)的代码行以分号结尾，这不同于前面介绍的 while 循环。在 环中，如果包含 while(expression)的代码行以分号结尾，循环将就此结束，变成一条空</p>
-<h2 id="③老大哥-For循环"><a href="#③老大哥-For循环" class="headerlink" title="③老大哥 For循环"></a>③老大哥 For循环</h2><p>for 循环的语法如下：<br>for (initial expression executed only once;<br> exit condition executed at the beginning of every loop;<br> loop expression executed at the end of every loop)<br>{<br> DoSomething;<br>}<br>for 循环让程序员能够定义并初始化一个计数器变量，在每次循环开头检查退出条件，在循环末尾<br>修改计数器变量的值。</p>
-<h2 id="④基于范围的for循环"><a href="#④基于范围的for循环" class="headerlink" title="④基于范围的for循环"></a>④基于范围的for循环</h2><p>结构如此：<br>for (VarType varName : sequence)<br>{<br>                     // Use varName that contains an element from sequence<br>} </p>
-<pre><code class="程序清单-使用基于范围的for循环来处理数组和std::string">
- 0: #include&lt;iostream&gt; 
- 1: #include &lt;string&gt; 
- 2: using namespace std; 
- 3: 
- 4: int main() 
- 5: { 
- 6: int someNums[] = { 1, 101, -1, 40, 2040 }; 
- 7: 
- 8: for (const int&amp; aNum : someNums) 
- 9: cout &lt;&lt; aNum &lt;&lt; &#39; &#39;; 
-10: cout &lt;&lt; endl; 
-11: 
-12: for (auto anElement : { 5, 222, 110, -45, 2017 }) 
-13: cout &lt;&lt; anElement &lt;&lt; &#39; &#39;; 
-14: cout &lt;&lt; endl; 
-15: 
-16: char charArray[] = { &#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39; }; 
-17: for (auto aChar : charArray) 
-18: cout &lt;&lt; aChar &lt;&lt; &#39; &#39;; 
-19: cout &lt;&lt; endl; 
-20: 
-21: double moreNums[] = { 3.14, -1.3, 22, 10101 }; 
-22: for (auto anElement : moreNums) 
-23: cout &lt;&lt; anElement &lt;&lt; &#39; &#39;; 
-24: cout &lt;&lt; endl; 
-25: 
-26: string sayHello{ &quot;Hello World!&quot; }; 
-27: for (auto anElement : sayHello) 
-28: cout &lt;&lt; anElement &lt;&lt; &#39; &#39;; 
-29: cout &lt;&lt; endl; 
-30: 
-31: return 0; 
-32: } 
-输出：
-1 101 -1 40 2040 
-5 222 110 -45 2017 
-h e l l o 
-3.14 -1.3 22 10101 
-H e l l o W o r l d ! 
-</code></pre>
-<h2 id="⑤使用-continue-和-break-修改循环的行为"><a href="#⑤使用-continue-和-break-修改循环的行为" class="headerlink" title="⑤使用 continue 和 break 修改循环的行为"></a>⑤使用 continue 和 break 修改循环的行为</h2><p>continue 让您能够跳转到循环开头，跳过循环块中后面的代码。因此，在 while、do…while 和 for循环中，continue 导致重新评估循环条件，如果为 true，则重新进入循环块。而 break 退出循环块，即结束当前循环。</p>
-<hr>
-<p>文章依据21天学通C++第八版，纯属小白自学！！！！</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/custom/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/custom/donate/WeChanQR.png"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/02/29/c++学习之数组与字符串/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                C++学习--指针数组与字符串</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2020/02/29/c++学习之变量与常量/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew@1.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s2.ax1x.com/2020/02/29/3slnFe.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s2.ax1x.com/2020/02/29/3slnFe.png">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                C++学习--变量</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
       
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "wi1797eVGol8VJniNxxUuyBU-gzGzoHsz",
-        appKey: "O5SKk9Lur8NHwO02ueP3M2OS",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="lzqmove.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/custom/bg.jpg" itemprop="image" alt="lzq" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="lzqmove.cn" itemprop="url" rel="author">lzq</a>
-            </h3>
-          </div>
+  <!-- 首页默认取最最新文章集 -->
+  
+    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/page/A00001.html">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i>继续努力</p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/lzqmove/cdnnew/img/themebg/bg11.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/page/A00001.html">
+    Blog生成带ID的html文件</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2020-2-29</div>
+    <p>
+    </p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/page/A00001.html">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+
+
+      <div class="clearer">
+      </div>
+    </main>
+    <!--  -->
+    
+  </div>
 </div>
-
-
-
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
